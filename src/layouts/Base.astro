@@ -1,0 +1,76 @@
+---
+/**
+ * Layout dasar — HTML shell, meta, i18n hreflang, font preload, skip-link.
+ */
+import "../styles/global.css";
+import { site } from "../data/site";
+import { defaultLang, type Lang } from "../i18n/ui";
+
+interface Props {
+  lang: Lang;
+  title: string;
+  description: string;
+  /** path tanpa domain, mis. /id/ */
+  path: string;
+}
+
+const { lang, title, description, path } = Astro.props;
+const canonical = new URL(path, site.url).href;
+
+// hreflang: pasangan id <-> en untuk path yang setara
+const bare = path.replace(/^\/(id|en)/, "") || "/";
+const altPaths: Record<string, string> = {
+  id: `/id${bare === "/" ? "/" : bare}`,
+  en: `/en${bare === "/" ? "/" : bare}`,
+};
+
+const ogImage = new URL("/og.jpg", site.url).href;
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta name="theme-color" content="#0b1526" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- hreflang: pasangan bahasa + x-default -->
+    {Object.entries(altPaths).map(([l, p]) => (
+      <link rel="alternate" hreflang={l} href={new URL(p, site.url).href} />
+    ))}
+    <link rel="alternate" hreflang="x-default" href={new URL(altPaths[defaultLang], site.url).href} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="profile" />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:locale" content={lang === "id" ? "id_ID" : "en_US"} />
+    <meta property="og:locale:alternate" content={lang === "id" ? "en_US" : "id_ID"} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <!-- Font preload: satu file variabel, hindari FOUT -->
+    <link
+      rel="preload"
+      href="/fonts/archivo-latin.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+  </head>
+  <body>
+    <a class="skip-link" href="#isi">{lang === "id" ? "Langsung ke isi" : "Skip to content"}</a>
+    <slot />
+  </body>
+</html>

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://arizkinewbie.com/sitemap-index.xml

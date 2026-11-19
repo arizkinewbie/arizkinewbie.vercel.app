@@ -1,0 +1,64 @@
+---
+/**
+ * Halaman utama — satu file untuk /id/ dan /en/.
+ * generateStaticPaths membuat kedua bahasa saat build.
+ */
+import Base from "../../layouts/Base.astro";
+import Hero from "../../components/Hero.astro";
+import About from "../../components/About.astro";
+import Panggung from "../../components/Panggung.astro";
+import Pemikiran from "../../components/Pemikiran.astro";
+import Karya from "../../components/Karya.astro";
+import Kontak from "../../components/Kontak.astro";
+import Footer from "../../components/Footer.astro";
+import { useTranslations, type Lang } from "../../i18n/ui";
+
+export function getStaticPaths() {
+  return [{ params: { lang: "id" } }, { params: { lang: "en" } }];
+}
+
+const { lang } = Astro.params as { lang: Lang };
+const t = useTranslations(lang);
+const currentPath = `/${lang}/`;
+
+const title =
+  lang === "id"
+    ? "Arizki Putra Rahman | Tata Kelola AI & Kebijakan Teknologi"
+    : "Arizki Putra Rahman | AI Governance & Technology Policy";
+const description = t("hero.sub");
+---
+
+<Base lang={lang} title={title} description={description} path={currentPath}>
+  <main id="isi">
+    <Hero lang={lang} currentPath={currentPath} />
+    <About lang={lang} />
+    <Panggung lang={lang} />
+    <Pemikiran lang={lang} />
+    <Karya lang={lang} />
+    <Kontak lang={lang} />
+  </main>
+  <Footer lang={lang} />
+</Base>
+
+<script>
+  // Mobile menu — inert, Escape, dan matchMedia
+  for (const btn of document.querySelectorAll<HTMLElement>("[data-menu-toggle]")) {
+    const nav = document.getElementById(btn.getAttribute("aria-controls") ?? "");
+    if (!nav) continue;
+    const set = (open: boolean) => {
+      btn.setAttribute("aria-expanded", String(open));
+      nav.classList.toggle("open", open);
+      nav.inert = !open;
+    };
+    btn.addEventListener("click", () => set(btn.getAttribute("aria-expanded") !== "true"));
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && btn.getAttribute("aria-expanded") === "true") {
+        set(false);
+        btn.focus();
+      }
+    });
+    window.matchMedia("(min-width:1024px)").addEventListener("change", (e) => {
+      if (e.matches) set(false);
+    });
+  }
+</script>

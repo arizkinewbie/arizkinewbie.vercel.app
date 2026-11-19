@@ -1,158 +1,131 @@
-# AstroPaper 📄
+# arizkinewbie.com
 
-![AstroPaper](public/astropaper-og.jpg)
-![Typescript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
-![GitHub](https://img.shields.io/github/license/satnaing/astro-paper?color=%232F3741&style=for-the-badge)
-[![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white&style=for-the-badge)](https://conventionalcommits.org)
-[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=for-the-badge)](http://commitizen.github.io/cz-cli/)
+Situs personal Arizki Putra Rahman — posisi: **operator tech policy** (tata kelola AI, regulasi digital & data, ekonomi digital), bukan portfolio developer.
 
-AstroPaper is a minimal, responsive, accessible and SEO-friendly Astro blog theme. This theme is designed and crafted based on [my personal blog](https://satnaing.dev/blog).
-
-This theme follows best practices and provides accessibility out of the box. Light and dark mode are supported by default. Moreover, additional color schemes can also be configured.
-
-This theme is self-documented \_ which means articles/posts in this theme can also be considered as documentations. Read [the blog posts](https://astro-paper.pages.dev/posts/) or check [the README Documentation Section](#-documentation) for more info.
-
-## 🔥 Features
-
-- [x] type-safe markdown
-- [x] super fast performance
-- [x] accessible (Keyboard/VoiceOver)
-- [x] responsive (mobile ~ desktops)
-- [x] SEO-friendly
-- [x] light & dark mode
-- [x] fuzzy search
-- [x] draft posts & pagination
-- [x] sitemap & rss feed
-- [x] followed best practices
-- [x] highly customizable
-- [x] dynamic OG image generation for blog posts [#15](https://github.com/satnaing/astro-paper/pull/15) ([Blog Post](https://astro-paper.pages.dev/posts/dynamic-og-image-generation-in-astropaper-blog-posts/))
-
-_Note: I've tested screen-reader accessibility of AstroPaper using **VoiceOver** on Mac and **TalkBack** on Android. I couldn't test all other screen-readers out there. However, accessibility enhancements in AstroPaper should be working fine on others as well._
-
-## ✅ Lighthouse Score
-
-<p align="center">
-  <a href="https://pagespeed.web.dev/report?url=https%3A%2F%2Fastro-paper.pages.dev%2F&form_factor=desktop">
-    <img width="710" alt="AstroPaper Lighthouse Score" src="AstroPaper-lighthouse-score.svg">
-  <a>
-</p>
-
-## 🚀 Project Structure
-
-Inside of AstroPaper, you'll see the following folders and files:
-
-```bash
-/
-├── public/
-│   ├── assets/
-│   │   └── logo.svg
-│   │   └── logo.png
-│   └── favicon.svg
-│   └── astropaper-og.jpg
-│   └── robots.txt
-│   └── toggle-theme.js
-├── src/
-│   ├── assets/
-│   │   └── socialIcons.ts
-│   ├── components/
-│   ├── content/
-│   │   |  blog/
-│   │   |    └── some-blog-posts.md
-│   │   └── config.ts
-│   ├── layouts/
-│   └── pages/
-│   └── styles/
-│   └── utils/
-│   └── config.ts
-│   └── types.ts
-└── package.json
-```
-
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-All blog posts are stored in `src/content/blog` directory.
-
-## 📖 Documentation
-
-Documentation can be read in two formats\_ _markdown_ & _blog post_.
-
-- Configuration - [markdown](src/content/blog/how-to-configure-astropaper-theme.md) | [blog post](https://astro-paper.pages.dev/posts/how-to-configure-astropaper-theme/)
-- Add Posts - [markdown](src/content/blog/adding-new-post.md) | [blog post](https://astro-paper.pages.dev/posts/adding-new-posts-in-astropaper-theme/)
-- Customize Color Schemes - [markdown](src/content/blog/customizing-astropaper-theme-color-schemes.md) | [blog post](https://astro-paper.pages.dev/posts/customizing-astropaper-theme-color-schemes/)
-- Predefined Color Schemes - [markdown](src/content/blog/predefined-color-schemes.md) | [blog post](https://astro-paper.pages.dev/posts/predefined-color-schemes/)
-
-> For AstroPaper v1, check out [this branch](https://github.com/satnaing/astro-paper/tree/astro-paper-v1) and this [live URL](https://astro-paper-v1.astro-paper.pages.dev/)
-
-## 💻 Tech Stack
-
-**Main Framework** - [Astro](https://astro.build/)  
-**Type Checking** - [TypeScript](https://www.typescriptlang.org/)  
-**Component Framework** - [ReactJS](https://reactjs.org/)  
-**Styling** - [TailwindCSS](https://tailwindcss.com/)  
-**UI/UX** - [Figma](https://figma.com)  
-**Fuzzy Search** - [FuseJS](https://fusejs.io/)  
-**Icons** - [Boxicons](https://boxicons.com/) | [Tablers](https://tabler-icons.io/)  
-**Code Formatting** - [Prettier](https://prettier.io/)  
-**Deployment** - [Cloudflare Pages](https://pages.cloudflare.com/)  
-**Illustration in About Page** - [https://freesvgillustration.com](https://freesvgillustration.com/)  
-**Linting** - [ESLint](https://eslint.org)
-
-## 👨🏻‍💻 Running Locally
-
-The easiest way to run this project locally is to run the following command in your desired directory.
-
-```bash
-# npm 6.x
-npm create astro@latest --template satnaing/astro-paper
-
-# npm 7+, extra double-dash is needed:
-npm create astro@latest -- --template satnaing/astro-paper
-
-# yarn
-yarn create astro --template satnaing/astro-paper
-```
-
-## Google Site Verification (optional)
-
-You can easily add your [Google Site Verification HTML tag](https://support.google.com/webmasters/answer/9008080#meta_tag_verification&zippy=%2Chtml-tag) in AstroPaper using environment variable. This step is optional. If you don't add the following env variable, the google-site-verification tag won't appear in the html `<head>` section.
-
-```bash
-# in your environment variable file (.env)
-PUBLIC_GOOGLE_SITE_VERIFICATION=your-google-site-verification-value
-```
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-> **_Note!_** For `Docker` commands we must have it [installed](https://docs.docker.com/engine/install/) in your machine.
-
-| Command                              | Action                                                                                                                           |
-| :----------------------------------- | :------------------------------------------------------------------------------------------------------------------------------- |
-| `npm install`                        | Installs dependencies                                                                                                            |
-| `npm run dev`                        | Starts local dev server at `localhost:4321`                                                                                      |
-| `npm run build`                      | Build your production site to `./dist/`                                                                                          |
-| `npm run preview`                    | Preview your build locally, before deploying                                                                                     |
-| `npm run format:check`               | Check code format with Prettier                                                                                                  |
-| `npm run format`                     | Format codes with Prettier                                                                                                       |
-| `npm run sync`                       | Generates TypeScript types for all Astro modules. [Learn more](https://docs.astro.build/en/reference/cli-reference/#astro-sync). |
-| `npm run cz`                         | Commit code changes with commitizen                                                                                              |
-| `npm run lint`                       | Lint with ESLint                                                                                                                 |
-| `docker compose up -d`               | Run AstroPaper on docker, You can access with the same hostname and port informed on `dev` command.                              |
-| `docker compose run app npm install` | You can run any command above into the docker container.                                                                         |
-
-> **_Warning!_** Windows PowerShell users may need to install the [concurrently package](https://www.npmjs.com/package/concurrently) if they want to [run diagnostics](https://docs.astro.build/en/reference/cli-reference/#astro-check) during development (`astro check --watch & astro dev`). For more info, see [this issue](https://github.com/satnaing/astro-paper/issues/113).
-
-## ✨ Feedback & Suggestions
-
-If you have any suggestions/feedback, you can contact me via [my email](mailto:contact@satnaing.dev). Alternatively, feel free to open an issue if you find bugs or want to request new features.
-
-## 📜 License
-
-Licensed under the MIT License, Copyright © 2023
+Dibangun ulang dari nol dengan **Astro 7.4.13 + Tailwind CSS v4.3.5**, deploy statis ke **Cloudflare Pages**.
 
 ---
 
-Made with 🤍 by [Sat Naing](https://satnaing.dev) 👨🏻‍💻 and [contributors](https://github.com/satnaing/astro-paper/graphs/contributors).
+## Untuk Putra — langkah takeover
+
+### 1. Clone & install
+
+```bash
+git clone https://github.com/arizkinewbie/arizkinewbie.vercel.app.git
+cd arizkinewbie.vercel.app
+git checkout rebuild/astro7
+npm install          # 291 paket, 0 vulnerability
+```
+
+### 2. Jalankan lokal
+
+```bash
+npm run dev          # http://localhost:4321 → redirect ke /id/
+npm run build        # output ke dist/
+npm run preview      # cek hasil build
+```
+
+### 3. Deploy ke Cloudflare Pages
+
+| Setting | Nilai |
+|---|---|
+| Framework preset | **Astro** |
+| Build command | `npm run build` |
+| Build output directory | `dist` |
+| Node version | `22` atau lebih baru (dev di sini v26.12.1) |
+| Environment variables | tidak ada (nol) |
+
+Custom domain: `arizkinewbie.com` + `www.arizkinewbie.com`. Cloudflare Pages memberi SSL otomatis.
+DNS saat ini di DomaiNesia (`ragna.id.domainesia.com`) — arahkan `CNAME` ke `<project>.pages.dev`
+atau pindahkan nameserver ke Cloudflare.
+
+> Alternatif cepat: repo ini juga bisa langsung dipasang di Vercel (nama repo masih menyebut vercel).
+> Keduanya gratis untuk situs statis; pilih **satu** jalur, jangan dua-duanya.
+
+---
+
+## Struktur proyek
+
+```
+arizki-repo/
+├── astro.config.mjs          # site URL, i18n (id/en), sitemap, Tailwind v4 via Vite
+├── keystatic.config.ts       # CMS opsional (fase 2)
+├── public/
+│   ├── fonts/                # Archivo variabel (latin + latin-ext), OFL 1.1
+│   ├── favicon.svg
+│   └── robots.txt
+└── src/
+    ├── components/
+    │   ├── Hero.astro        # hero + kartu bukti kredibilitas
+    │   ├── Nav.astro         # header, menu mobile, language switch
+    │   ├── About.astro       # tentang + 4 pilar topik
+    │   ├── Panggung.astro    # daftar forum & rekam jejak
+    │   ├── Pemikiran.astro   # grid policy brief
+    │   ├── Karya.astro       # Nbie Solutions & SymptoMed
+    │   ├── Kontak.astro      # 3 CTA WhatsApp + kontak langsung
+    │   ├── Footer.astro
+    │   └── Icon.astro        # ikon SVG inline, nol dependency
+    ├── data/
+    │   ├── site.ts           # kontak, URL, varian pesan WhatsApp
+    │   └── content.ts        # proof, pillars, talks, briefs, works (id + en)
+    ├── i18n/ui.ts            # kamus UI dua bahasa
+    ├── layouts/Base.astro    # shell HTML, meta, hreflang, OG, font preload
+    ├── pages/
+    │   ├── index.astro       # / → 301 /id/
+    │   └── [lang]/index.astro# /id/ dan /en/
+    └── styles/global.css     # token + komponen (.pill/.dot/.disp), Tailwind v4
+```
+
+## Mengedit konten
+
+Semua teks ada di dua tempat — **tidak perlu menyentuh komponen**:
+
+- `src/data/content.ts` — data terstruktur (panggung, brief, pilar, karya), tiap entri punya `id` + `en`
+- `src/i18n/ui.ts` — label UI (navigasi, tombol, paragraf)
+
+## Design system
+
+Diadaptasi dari `davidalfasunarna.com` (Tailwind 4.3.4):
+
+- **Token warna** di blok `@theme` (`src/styles/global.css`). Ganti 4 nilai untuk kembali ke palet ungu acuan.
+- **Ritme fluid** — satu rumus `clamp()` untuk semua ukuran huruf & jarak. Tidak ada media query ukuran huruf.
+- **Font** — Archivo variabel (bobot 100–900, lebar 62–125%) + `Archivo Fallback` terkalibrasi (`size-adjust`, `ascent-override`) supaya layout tidak bergeser sebelum font termuat.
+- **Komponen** — `.pill`, `.dot`, `.disp`, `.pad`, `.py-section`, `.proof`, `.talk__row`, `.work`, `.contact`.
+
+## Yang belum terisi (butuh aset dari Kanda)
+
+- [ ] **Foto hero** — landscape ≥2400px. Ganti `<div class="hero__placeholder">` di `Hero.astro` dengan `<img class="hero__media" srcset="...">`.
+- [ ] **`public/og.jpg`** — 1200×630 untuk preview WhatsApp/LinkedIn/X.
+- [ ] **Policy brief** — 4 kartu di `content.ts` masih placeholder berstatus "SEGERA".
+- [ ] **Foto panggung** — 2–3 foto untuk section Panggung.
+- [ ] **Media kit PDF** — `/media-kit.pdf`, ditautkan dari section Kontak.
+
+## CMS opsional (fase 2 — belum dipasang)
+
+`keystatic.config.ts` sudah disiapkan untuk mengelola daftar panggung & brief lewat editor visual.
+Belum aktif karena menambah dependency. Aktifkan dengan:
+
+```bash
+npm i @keystatic/core @keystatic/astro @astrojs/react react react-dom
+```
+
+lalu ikuti https://keystatic.com/docs/astro — mode `local` gratis tanpa akun,
+mode `github` butuh OAuth App.
+
+## Hasil verifikasi build
+
+```
+astro check   → 0 errors, 0 warnings, 0 hints (17 file)
+astro build   → 3 halaman (/id/, /en/, /), 813 ms
+dist total    → 272 KB (termasuk 2 file font 176 KB)
+CSS           → 16 KB satu file
+HTML          → 19 KB per halaman, JS hanya inline ~1 KB
+```
+
+Render diuji di viewport 390×844 dan 1280×900: nol overflow horizontal,
+menu mobile membuka dengan `aria-expanded=true`, language switch berfungsi,
+`<html lang>` berganti, hreflang id/en/x-default terpasang.
+
+## Lisensi
+
+Kode: MIT. Font Archivo: SIL Open Font License 1.1.

@@ -1,0 +1,50 @@
+---
+/** Section Tentang + empat pilar topik. */
+import Icon from "./Icon.astro";
+import { useTranslations, type Lang } from "../i18n/ui";
+import { pillars } from "../data/content";
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<section id="tentang" class="pad py-section" style="background:var(--color-mist)">
+  <div class="grid gap-6 lg:grid-cols-12 items-center">
+    <div class="lg:col-span-6 flex flex-col gap-6">
+      <p class="kicker">{t("about.kicker")}</p>
+      <h2 class="disp h-1">{t("about.h2a")}<br />{t("about.h2b")}</h2>
+      <p class="max-w-prose" style="color:var(--color-mute)">{t("about.p1")}</p>
+      <p class="max-w-prose" style="color:var(--color-mute)">{t("about.p2")}</p>
+      <div class="flex flex-wrap gap-3">
+        <a class="pill pill--dark" href={`/${lang}/#panggung`}>
+          <span class="dot"><Icon name="arrow-right" /></span>
+          {t("about.cta1")}
+        </a>
+        <a class="pill pill--onlight" href={`/${lang}/#kontak`}>{t("about.cta2")}</a>
+      </div>
+    </div>
+
+    <div class="lg:col-span-6 grid gap-4 sm:grid-cols-2">
+      {pillars.map((p) => (
+        <div class="card">
+          <span class="card__ico" aria-hidden="true">{p.ico}</span>
+          <h3 class="h-3" style="font-weight:700">{p.h[lang]}</h3>
+          <p style="font-size:15px;line-height:1.55;color:var(--color-mute)">{p.p[lang]}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .kicker {
+    font-weight: 700;
+    color: var(--color-violet);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    font-size: 14px;
+  }
+</style>

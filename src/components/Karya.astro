@@ -1,0 +1,30 @@
+---
+/** Section Karya — Nbie Solutions & SymptoMed. */
+import { useTranslations, type Lang } from "../i18n/ui";
+import { works } from "../data/content";
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<section id="karya" class="pad py-section" style="background:var(--color-mist)">
+  <div class="grid gap-8 lg:grid-cols-12">
+    <div class="lg:col-span-4 flex flex-col gap-4">
+      <h2 class="disp h-2">{t("karya.h2")}</h2>
+      <p style="color:var(--color-mute);font-size:16px">{t("karya.sub")}</p>
+    </div>
+
+    <div class="lg:col-span-8 grid gap-4 sm:grid-cols-2">
+      {works.map((w) => (
+        <a class:list={["work", { "work--light": w.light }]} href={w.href} target="_blank" rel="noopener">
+          <span class="work__role">{w.role[lang]}</span>
+          <h3 class="disp" style="font-size:22px">{w.name}</h3>
+          <p style="font-size:15px;line-height:1.55;opacity:.82">{w.p[lang]}</p>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

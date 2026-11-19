@@ -1,0 +1,62 @@
+---
+/** Hero + kartu bukti kredibilitas. */
+import Nav from "./Nav.astro";
+import Icon from "./Icon.astro";
+import { useTranslations, type Lang } from "../i18n/ui";
+import { proof } from "../data/content";
+import { waLink } from "../data/site";
+
+interface Props {
+  lang: Lang;
+  currentPath: string;
+}
+const { lang, currentPath } = Astro.props;
+const t = useTranslations(lang);
+
+const chips =
+  lang === "id"
+    ? ["Tata Kelola AI", "Regulasi Digital & Data", "Ekonomi Digital", "Daerah & Talenta"]
+    : ["AI Governance", "Digital & Data Regulation", "Digital Economy", "Regions & Talent"];
+---
+
+<header class="hero">
+  <div class="hero__placeholder" aria-hidden="true"></div>
+  <div class="hero__grid" aria-hidden="true"></div>
+  <div class="hero__scrim" aria-hidden="true"></div>
+
+  <div class="hero__inner pad">
+    <Nav lang={lang} currentPath={currentPath} />
+
+    <div class="hero__body">
+      <div class="hero__kicker">
+        {chips.map((c) => <span class="chip"><i></i>{c}</span>)}
+      </div>
+
+      <h1 class="disp h-hero">
+        {t("hero.h1a")}<br />{t("hero.h1b")}<br />{t("hero.h1c")}
+      </h1>
+
+      <p class="hero__sub">{t("hero.sub")}</p>
+
+      <div class="flex flex-wrap gap-3">
+        <a class="pill" href={waLink("speak", lang)}>
+          <span class="dot"><Icon name="arrow-right" /></span>
+          {t("hero.cta1")}
+        </a>
+        <a class="pill pill--ghost" href={`/${lang}/#pemikiran`}>{t("hero.cta2")}</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Kartu bukti kredibilitas (menggantikan kartu metrik follower) -->
+<section class="pad" style="background:var(--color-mist)" aria-label={t("proof")}>
+  <div class="proof" style="transform:translateY(-32px)">
+    {proof.map((p) => (
+      <div class="proof__cell">
+        <span class="proof__k">{p.k[lang]}</span>
+        <span class="proof__v">{p.v[lang]}</span>
+      </div>
+    ))}
+  </div>
+</section>

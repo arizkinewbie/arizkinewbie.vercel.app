@@ -1,0 +1,57 @@
+---
+/**
+ * Nav — header bar + menu mobile + language switch.
+ * Sticky di atas hero, onlight=true untuk halaman dalam.
+ */
+import Icon from "./Icon.astro";
+import { useTranslations, type Lang } from "../i18n/ui";
+
+interface Props {
+  lang: Lang;
+  currentPath: string;
+  onlight?: boolean;
+}
+
+const { lang, currentPath, onlight = false } = Astro.props;
+const t = useTranslations(lang);
+
+// Path tanpa prefix bahasa, untuk ditukar ke bahasa lain
+const bare = currentPath.replace(/^\/(id|en)/, "") || "/";
+const otherLang: Lang = lang === "id" ? "en" : "id";
+const otherHref = `/${otherLang}${bare === "/" ? "/" : bare}`;
+
+const links = [
+  { href: `/${lang}/#panggung`, label: t("nav.panggung") },
+  { href: `/${lang}/#pemikiran`, label: t("nav.pemikiran") },
+  { href: `/${lang}/#karya`, label: t("nav.karya") },
+  { href: `/${lang}/#tentang`, label: t("nav.tentang") },
+  { href: `/${lang}/#kontak`, label: t("nav.kontak") },
+];
+---
+
+<div class:list={["bar", { "bar--onlight": onlight }]}>
+  <a class="bar__brand" href={`/${lang}/`}>
+    <span class="brand-long">{t("site.title")}</span>
+    <span class="brand-short">Arizki</span>
+  </a>
+
+  <button
+    class="menu-toggle"
+    type="button"
+    aria-label={lang === "id" ? "Buka menu" : "Open menu"}
+    aria-expanded="false"
+    aria-controls="menu-utama"
+    data-menu-toggle
+  >
+    <Icon name="menu" size={20} />
+  </button>
+
+  <nav class="nav-main" id="menu-utama" aria-label={lang === "id" ? "Utama" : "Main"}>
+    {links.map((l) => <a href={l.href}>{l.label}</a>)}
+  </nav>
+
+  <div class="lang" role="group" aria-label={t("lang.switch")}>
+    <a href={lang === "id" ? currentPath : otherHref} aria-current={lang === "id" ? "true" : "false"}>ID</a>
+    <a href={lang === "en" ? currentPath : otherHref} aria-current={lang === "en" ? "true" : "false"}>EN</a>
+  </div>
+</div>
