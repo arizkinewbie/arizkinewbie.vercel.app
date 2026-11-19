@@ -90,10 +90,13 @@
     letter-spacing: -0.01em;
     line-height: 0.95;
   }
-  .h-hero { font-size: clamp(34px, calc(34px + 46 * ((100vw - 360px) / 1080)), 80px); }
-  .h-1    { font-size: clamp(30px, calc(30px + 18 * ((100vw - 360px) / 1080)), 48px); }
-  .h-2    { font-size: clamp(24px, calc(24px + 12 * ((100vw - 360px) / 1080)), 36px); }
-  .h-3    { font-size: clamp(20px, calc(20px + 4 * ((100vw - 360px) / 1080)), 24px); }
+  .type-hero {
+    font-size: clamp(30px, calc(30px + 42 * ((100vw - 360px) / 1080)), 72px);
+    text-wrap: balance;
+  }
+  .type-1    { font-size: clamp(30px, calc(30px + 18 * ((100vw - 360px) / 1080)), 48px); }
+  .type-2    { font-size: clamp(24px, calc(24px + 12 * ((100vw - 360px) / 1080)), 36px); }
+  .type-3    { font-size: clamp(20px, calc(20px + 4 * ((100vw - 360px) / 1080)), 24px); }
 
   .pad {
     padding-left: clamp(20px, calc(20px + 28 * ((100vw - 360px) / 1080)), 48px);
@@ -248,7 +251,7 @@
     gap: 24px;
     padding-bottom: clamp(72px, calc(72px + 48 * ((100vw - 360px) / 1080)), 120px);
     flex: 1;
-    max-width: 760px;
+    max-width: min(1120px, 100%);
   }
   .hero__kicker { display: flex; flex-wrap: wrap; gap: 8px; }
   .chip {

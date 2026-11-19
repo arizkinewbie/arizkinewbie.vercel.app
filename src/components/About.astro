@@ -15,7 +15,7 @@ const t = useTranslations(lang);
   <div class="grid gap-6 lg:grid-cols-12 items-center">
     <div class="lg:col-span-6 flex flex-col gap-6">
       <p class="kicker">{t("about.kicker")}</p>
-      <h2 class="disp h-1">{t("about.h2a")}<br />{t("about.h2b")}</h2>
+      <h2 class="disp type-1">{t("about.h2a")}<br />{t("about.h2b")}</h2>
       <p class="max-w-prose" style="color:var(--color-mute)">{t("about.p1")}</p>
       <p class="max-w-prose" style="color:var(--color-mute)">{t("about.p2")}</p>
       <div class="flex flex-wrap gap-3">
@@ -31,7 +31,7 @@ const t = useTranslations(lang);
       {pillars.map((p) => (
         <div class="card">
           <span class="card__ico" aria-hidden="true">{p.ico}</span>
-          <h3 class="h-3" style="font-weight:700">{p.h[lang]}</h3>
+          <h3 class="type-3" style="font-weight:700">{p.h[lang]}</h3>
           <p style="font-size:15px;line-height:1.55;color:var(--color-mute)">{p.p[lang]}</p>
         </div>
       ))}
