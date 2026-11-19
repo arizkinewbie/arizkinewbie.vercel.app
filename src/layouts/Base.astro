@@ -68,6 +68,25 @@ const ogImage = new URL("/og.jpg", site.url).href;
     />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="sitemap" href="/sitemap-index.xml" />
+
+    <!-- JSON-LD: relasi Person <-> organisasi untuk mesin pencari -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Person",
+      name: "Arizki Putra Rahman",
+      url: canonical,
+      image: ogImage,
+      jobTitle: "CEO Nbie Solutions · CTO SymptoMed",
+      worksFor: [
+        { "@type": "Organization", name: "Nbie Solutions", url: site.nbies },
+        { "@type": "Organization", name: "SymptoMed", url: site.symptomed },
+      ],
+      sameAs: [site.linkedin, site.instagram, site.github],
+      knowsAbout: [
+        "AI governance", "Tata kelola AI", "Kebijakan teknologi",
+        "UU PDP", "Perlindungan data pribadi", "Digital policy",
+      ],
+    })} />
   </head>
   <body>
     <a class="skip-link" href="#isi">{lang === "id" ? "Langsung ke isi" : "Skip to content"}</a>

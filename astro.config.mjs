@@ -9,6 +9,8 @@ export default defineConfig({
   site: process.env.SITE_URL || "https://arizkinewbie.com",
   integrations: [
     sitemap({
+      // Halaman / hanya meta-refresh 301 ke /id/ — jangan masuk sitemap (duplikat di mata Google).
+      filter: (page) => new URL(page).pathname !== "/",
       i18n: {
         defaultLocale: "id",
         locales: { id: "id", en: "en" },

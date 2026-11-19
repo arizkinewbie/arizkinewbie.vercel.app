@@ -10,7 +10,7 @@
   --font-sans: "Archivo", "Archivo Fallback", Arial, sans-serif;
 
   /* Palet: navy + amber. Ganti 4 nilai ini untuk kembali ke ungu acuan. */
-  --color-violet: #c8871f;   /* accent utama */
+  --color-violet: #96600d;   /* accent utama (amber gelap — kontras 5.28:1 di atas teks putih, WCAG AA) */
   --color-ink: #08111f;      /* teks gelap / bg gelap */
   --color-night: #0b1526;    /* bg section gelap */
   --color-plum: #122238;     /* bg section gelap 2 */
@@ -57,6 +57,7 @@
 }
 
 @layer base {
+  [id] { scroll-margin-top: 88px; }
   html {
     -webkit-text-size-adjust: 100%;
     scroll-behavior: smooth;
@@ -203,7 +204,7 @@
     align-items: center;
     justify-content: center;
     min-width: 44px;
-    min-height: 40px;
+    min-height: 44px;
     border-radius: 999px;
     text-decoration: none;
     font-size: 14px;
@@ -223,7 +224,7 @@
     position: absolute;
     inset: 0;
     background:
-      radial-gradient(120% 90% at 78% 18%, rgba(200, 135, 31, 0.42) 0%, rgba(200, 135, 31, 0) 55%),
+      radial-gradient(120% 90% at 78% 18%, rgba(150, 96, 13, 0.42) 0%, rgba(150, 96, 13, 0) 55%),
       radial-gradient(90% 80% at 12% 88%, rgba(30, 58, 95, 0.85) 0%, rgba(30, 58, 95, 0) 60%),
       linear-gradient(150deg, #0b1526 0%, #16324f 48%, #1f4a6d 100%);
   }
@@ -309,7 +310,7 @@
     width: 44px;
     height: 44px;
     border-radius: 12px;
-    background: rgba(200, 135, 31, 0.16);
+    background: rgba(150, 96, 13, 0.16);
     color: var(--color-violet);
     font-size: 20px;
     flex: none;
@@ -357,7 +358,7 @@
     text-transform: uppercase;
     color: var(--color-violet);
   }
-  .work--light .work__role { color: #a06a10; }
+  .work--light .work__role { color: #7a4f0a; }
 
   /* ---------- Kontak ---------- */
   .contact { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
@@ -365,6 +366,7 @@
     display: flex;
     flex-direction: column;
     gap: 6px;
+    min-height: 44px;
     padding: 20px;
     border-radius: 14px;
     background: rgba(255, 255, 255, 0.07);
@@ -389,7 +391,13 @@
     color: var(--color-fog);
   }
   .foot__links { display: flex; gap: 20px; flex-wrap: wrap; }
-  .foot__links a { text-decoration: none; opacity: 0.85; }
+  .foot__links a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    text-decoration: none;
+    opacity: 0.85;
+  }
   .foot__links a:hover { opacity: 1; text-decoration: underline; }
 
   .skip-link {

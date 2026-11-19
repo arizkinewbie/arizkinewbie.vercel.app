@@ -1,0 +1,59 @@
+---
+/**
+ * 404 — halaman error statis untuk URL yang tidak ada.
+ * Static build: Astro memakai src/pages/404.astro sebagai 404.html.
+ */
+import Base from "../layouts/Base.astro";
+---
+<Base
+  lang="id"
+  title="Halaman tidak ditemukan | Arizki Putra Rahman"
+  description="Halaman yang kamu cari tidak ada di arizkinewbie.com."
+  path="/404.html"
+>
+  <main class="nf">
+    <p class="nf__code">404</p>
+    <h1 class="nf__title">Halaman tidak ditemukan</h1>
+    <p class="nf__sub">
+      Alamat yang kamu buka salah ketik atau sudah dipindah.<br />
+      Kembali ke <a href="/id/">halaman utama</a> atau <a href="/en/">English version</a>.
+    </p>
+  </main>
+</Base>
+
+<style>
+  .nf {
+    min-height: 70vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    text-align: center;
+    padding: 32px;
+    background: var(--color-night);
+    color: #fff;
+  }
+  .nf__code {
+    font-size: clamp(64px, 12vw, 120px);
+    font-weight: 800;
+    font-stretch: 112%;
+    line-height: 1;
+    color: var(--color-lilac);
+    margin: 0;
+  }
+  .nf__title {
+    margin: 0;
+    font-size: clamp(22px, 4vw, 32px);
+  }
+  .nf__sub {
+    margin: 0;
+    color: var(--color-fog);
+    line-height: 1.6;
+  }
+  .nf__sub a {
+    color: var(--color-lilac);
+    text-decoration: underline;
+    text-underline-offset: 0.25em;
+  }
+</style>
