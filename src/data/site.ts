@@ -1,8 +1,11 @@
 /** Kontak & tautan — satu sumber kebenaran. */
+// SITE_URL dipakai untuk staging (arizkinewbie.nbies.id) vs produksi (arizkinewbie.com).
+const SITE_URL = process.env.SITE_URL || "https://arizkinewbie.com";
+
 export const site = {
   name: "Arizki Putra Rahman",
-  domain: "arizkinewbie.com",
-  url: "https://arizkinewbie.com",
+  domain: new URL(SITE_URL).hostname,
+  url: SITE_URL,
   email: "arizki@nbies.id",
   phone: "+62 822-8948-6808",
   phoneRaw: "6282289486808",

@@ -5,7 +5,8 @@ import tailwindcss from "@tailwindcss/vite";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://arizkinewbie.com",
+  // Override per environment: SITE_URL=https://arizkinewbie.nbies.id npm run build
+  site: process.env.SITE_URL || "https://arizkinewbie.com",
   integrations: [
     sitemap({
       i18n: {
