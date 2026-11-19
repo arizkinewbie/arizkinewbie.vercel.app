@@ -115,16 +115,25 @@ mode `github` butuh OAuth App.
 ## Hasil verifikasi build
 
 ```
-astro check   → 0 errors, 0 warnings, 0 hints (17 file)
-astro build   → 3 halaman (/id/, /en/, /), 813 ms
+astro check   → 0 errors, 0 warnings, 0 hints (18 file)
+astro build   → 3 halaman (/id/, /en/, /), ~800 ms
 dist total    → 272 KB (termasuk 2 file font 176 KB)
 CSS           → 16 KB satu file
 HTML          → 19 KB per halaman, JS hanya inline ~1 KB
 ```
 
-Render diuji di viewport 390×844 dan 1280×900: nol overflow horizontal,
+Render diuji di viewport 390×844, 768×1024, dan 1440×900: nol overflow horizontal,
 menu mobile membuka dengan `aria-expanded=true`, language switch berfungsi,
-`<html lang>` berganti, hreflang id/en/x-default terpasang.
+`<html lang>` berganti, hreflang id/en/x-default terpasang,
+16/16 heading tingginya > 0.8x font-size, h1 = 3 baris rapi di 1440px.
+
+## Peringatan kelas CSS
+
+**Jangan** menamai kelas kustom dengan nama yang menabrak utility Tailwind
+(`.h-1`, `.w-2`, `.p-4`, `.m-2`, `.text-lg`, dst). Tailwind v4 punya `.h-1`
+= `height: .25rem`, dan di CSS hasil build utility itu **menang** atas kelas
+dengan nama sama — heading bisa terjepit jadi 4px. Pakai prefix sendiri:
+`.type-1`, `.sec-x`, `.cardx-y`.
 
 ## Lisensi
 
