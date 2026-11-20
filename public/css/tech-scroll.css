@@ -1,0 +1,217 @@
+/**
+ * High-Tech Scroll Experience & Animations for arizkinewbie.com
+ * Theme: Cyber / AI Executive / High-Tech Governance
+ * Pure CSS with zero external dependencies. Respects prefers-reduced-motion.
+ */
+
+:root {
+  --tech-cyan: #38bdf8;
+  --tech-indigo: #6366f1;
+  --tech-gold: #e8c37e;
+  --tech-violet: #96600d;
+  --tech-ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* 1. Smooth Native Scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* 2. Laser Progress Bar (Top of viewport) */
+#tech-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 3px;
+  background: linear-gradient(90deg, #0284c7, var(--tech-cyan), var(--tech-indigo), var(--tech-gold));
+  z-index: 99999;
+  pointer-events: none;
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.7), 0 0 20px rgba(99, 102, 241, 0.4);
+  transition: width 0.12s ease-out;
+}
+
+#tech-progress::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: -2px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 0 10px 2px var(--tech-cyan), 0 0 16px 4px var(--tech-indigo);
+}
+
+/* 3. High-Tech Scroll Reveal Base Classes */
+.tech-reveal {
+  opacity: 0;
+  transform: translateY(28px) scale(0.98);
+  filter: blur(4px);
+  transition: opacity 0.75s var(--tech-ease),
+              transform 0.75s var(--tech-ease),
+              filter 0.75s var(--tech-ease);
+  transition-delay: var(--tech-delay, 0ms);
+  will-change: opacity, transform, filter;
+}
+
+.tech-revealed {
+  opacity: 1 !important;
+  transform: translateY(0) scale(1) !important;
+  filter: blur(0) !important;
+}
+
+/* 4. High-Tech Micro-Interactions & Cards Hover */
+.proof__cell {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.35s var(--tech-ease), box-shadow 0.35s var(--tech-ease), border-color 0.35s ease;
+}
+
+.proof__cell::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--tech-cyan), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.proof__cell:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 28px -10px rgba(11, 21, 38, 0.12);
+}
+
+.proof__cell:hover::before {
+  opacity: 1;
+}
+
+/* Work Cards (Karya: Nbie Solutions & SymptoMed) */
+.work {
+  position: relative;
+  transition: transform 0.35s var(--tech-ease), box-shadow 0.35s var(--tech-ease), border-color 0.35s ease !important;
+}
+
+.work:hover {
+  transform: translateY(-5px) !important;
+  box-shadow: 0 16px 36px -10px rgba(56, 189, 248, 0.22);
+  border-color: rgba(56, 189, 248, 0.45) !important;
+}
+
+/* Talk Rows (Panggung Rekam Jejak) */
+.talk__row {
+  border-radius: 8px;
+  transition: background 0.25s ease, padding 0.25s var(--tech-ease), transform 0.25s var(--tech-ease);
+}
+
+.talk__row:hover {
+  background: rgba(255, 255, 255, 0.05);
+  padding-left: 12px;
+  transform: translateX(4px);
+}
+
+/* Articles / Pemikiran Cards */
+.card {
+  position: relative;
+  transition: transform 0.35s var(--tech-ease), box-shadow 0.35s var(--tech-ease), border-color 0.35s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 32px -10px rgba(99, 102, 241, 0.15);
+  border-color: rgba(99, 102, 241, 0.35);
+}
+
+/* Contact Box Cyber Border Accent */
+.contact-box {
+  position: relative;
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.18) !important;
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.4);
+  transition: border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.contact-box:hover {
+  border-color: rgba(232, 195, 126, 0.5) !important;
+  box-shadow: 0 24px 50px -15px rgba(232, 195, 126, 0.15), 0 0 20px -5px rgba(232, 195, 126, 0.1);
+}
+
+/* 5. Floating Back-to-Top HUD Pill */
+#tech-back-to-top {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 9999;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: rgba(11, 21, 38, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(16px);
+  transition: opacity 0.35s var(--tech-ease), transform 0.35s var(--tech-ease), visibility 0.35s, border-color 0.25s, box-shadow 0.25s;
+  box-shadow: 0 8px 24px -6px rgba(0, 0, 0, 0.5);
+}
+
+#tech-back-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+#tech-back-to-top:hover {
+  border-color: var(--tech-cyan);
+  color: var(--tech-cyan);
+  box-shadow: 0 0 20px rgba(56, 189, 248, 0.35);
+  transform: translateY(-2px);
+}
+
+#tech-back-to-top svg {
+  transition: transform 0.25s ease;
+}
+
+#tech-back-to-top:hover svg {
+  transform: translateY(-2px);
+}
+
+/* 6. High-Tech Ambient Grid Glow in Dark Sections */
+#panggung, #kontak {
+  position: relative;
+  background-image: radial-gradient(circle at 85% 15%, rgba(56, 189, 248, 0.05) 0%, transparent 55%),
+                    radial-gradient(circle at 15% 85%, rgba(99, 102, 241, 0.04) 0%, transparent 55%);
+}
+
+/* 7. Accessibility: Prefers-Reduced-Motion */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
+  .tech-reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    transition: none !important;
+  }
+  #tech-progress, #tech-back-to-top {
+    display: none !important;
+  }
+  .proof__cell, .work, .card, .talk__row {
+    transform: none !important;
+    transition: none !important;
+  }
+}

@@ -21,11 +21,11 @@ const otherLang: Lang = lang === "id" ? "en" : "id";
 const otherHref = `/${otherLang}${bare === "/" ? "/" : bare}`;
 
 const links = [
-  { href: `/${lang}/#panggung`, label: t("nav.panggung") },
-  { href: `/${lang}/#pemikiran`, label: t("nav.pemikiran") },
-  { href: `/${lang}/#karya`, label: t("nav.karya") },
-  { href: `/${lang}/#tentang`, label: t("nav.tentang") },
-  { href: `/${lang}/#kontak`, label: t("nav.kontak") },
+  { href: `/${lang}/panggung/`, label: t("nav.panggung"), active: currentPath.includes("/panggung") },
+  { href: `/${lang}/pemikiran/`, label: t("nav.pemikiran"), active: currentPath.includes("/pemikiran") },
+  { href: `/${lang}/karya/`, label: t("nav.karya"), active: currentPath.includes("/karya") },
+  { href: `/${lang}/tentang/`, label: t("nav.tentang"), active: currentPath.includes("/tentang") },
+  { href: `/${lang}/kontak/`, label: t("nav.kontak"), active: currentPath.includes("/kontak") },
 ];
 ---
 
@@ -47,7 +47,11 @@ const links = [
   </button>
 
   <nav class="nav-main" id="menu-utama" aria-label={lang === "id" ? "Utama" : "Main"}>
-    {links.map((l) => <a href={l.href}>{l.label}</a>)}
+    {links.map((l) => (
+      <a href={l.href} class:list={[{ "nav-link--active": l.active }]} aria-current={l.active ? "page" : undefined}>
+        {l.label}
+      </a>
+    ))}
   </nav>
 
   <div class="lang" role="group" aria-label={t("lang.switch")}>
@@ -55,3 +59,36 @@ const links = [
     <a href={lang === "en" ? currentPath : otherHref} aria-current={lang === "en" ? "true" : "false"}>EN</a>
   </div>
 </div>
+
+<style>
+  .nav-link--active {
+    color: var(--color-lilac) !important;
+    text-decoration: underline;
+    text-underline-offset: 0.35em;
+  }
+  .bar--onlight .nav-link--active {
+    color: var(--color-violet) !important;
+  }
+</style>
+
+<script>
+  for (const btn of document.querySelectorAll<HTMLElement>("[data-menu-toggle]")) {
+    const nav = document.getElementById(btn.getAttribute("aria-controls") ?? "");
+    if (!nav) continue;
+    const set = (open: boolean) => {
+      btn.setAttribute("aria-expanded", String(open));
+      nav.classList.toggle("open", open);
+      nav.inert = !open;
+    };
+    btn.addEventListener("click", () => set(btn.getAttribute("aria-expanded") !== "true"));
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && btn.getAttribute("aria-expanded") === "true") {
+        set(false);
+        btn.focus();
+      }
+    });
+    window.matchMedia("(min-width:1024px)").addEventListener("change", (e) => {
+      if (e.matches) set(false);
+    });
+  }
+</script>

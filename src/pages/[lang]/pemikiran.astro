@@ -1,0 +1,323 @@
+---
+/**
+ * Halaman Pemikiran & Policy Briefs.
+ * Kajian regulasi, policy brief, dan analisis tata kelola teknologi.
+ */
+import Base from "../../layouts/Base.astro";
+import PageHeader from "../../components/PageHeader.astro";
+import Footer from "../../components/Footer.astro";
+import Icon from "../../components/Icon.astro";
+import type { Lang } from "../../i18n/ui";
+import { waLink } from "../../data/site";
+
+export function getStaticPaths() {
+  return [{ params: { lang: "id" } }, { params: { lang: "en" } }];
+}
+
+const { lang } = Astro.params as { lang: Lang };
+const currentPath = `/${lang}/pemikiran/`;
+
+const title =
+  lang === "id"
+    ? "Pemikiran & Policy Briefs | Arizki Putra Rahman"
+    : "Policy Briefs & Writing | Arizki Putra Rahman";
+const description =
+  lang === "id"
+    ? "Kajian regulasi, policy brief, dan catatan hukum teknologi dari meja kerja Arizki Putra Rahman: Perpres AI, kepatuhan UU PDP, dan kedaulatan data."
+    : "Policy briefs and regulatory commentary by Arizki Putra Rahman: AI Presidential Regulations, PDP compliance, and national data sovereignty.";
+
+const articles = [
+  {
+    category: "ai",
+    catLabel: { id: "Tata Kelola AI", en: "AI Governance" },
+    title: {
+      id: "Perpres Tata Kelola & Peta Jalan AI: Keseimbangan antara Inovasi dan Akuntabilitas",
+      en: "AI Governance Presidential Regulation: Balancing Open Innovation and Algorithmic Accountability",
+    },
+    summary: {
+      id: "Analisis kritis atas klausul kewajiban transparansi model AI generatif. Mengapa regulatory sandbox yang fleksibel jauh lebih efektif mencegah pelarian inovator ke luar negeri daripada pemidanaan prematur.",
+      en: "A critical analysis of transparency obligations for generative AI models. Why flexible regulatory sandboxes prevent talent flight far better than premature punitive measures.",
+    },
+    status: { id: "Policy Brief Resmi · 2026", en: "Official Policy Brief · 2026" },
+    points: [
+      { id: "Pemisahan tanggung jawab developer vs integrator model", en: "Delineation of developer vs integrator liabilities" },
+      { id: "Standarisasi audit bias data latih lokal", en: "Standardisation for local training dataset bias audits" },
+      { id: "Insentif komputasi bagi startup AI domestik", en: "Computing subsidies for domestic AI ventures" },
+    ],
+  },
+  {
+    category: "pdp",
+    catLabel: { id: "Privasi & UU PDP", en: "Privacy & PDP Law" },
+    title: {
+      id: "Kepatuhan UU PDP No. 27/2022: Panduan Operasional Menghadapi PP 33/2026",
+      en: "PDP Law No. 27/2022 Compliance: Operational Guidelines for GR 33/2026",
+    },
+    summary: {
+      id: "Langkah-langkah teknis penyesuaian arsitektur database, enkripsi data pribadi spesifik (data medis/keuangan), dan prosedur mitigasi sanksi denda administratif maksimal 2% dari pendapatan tahunan.",
+      en: "Technical roadmaps for database architecture refactoring, sensitive personal data encryption, and mitigating administrative penalties of up to 2% annual revenue.",
+    },
+    status: { id: "Kajian Praktis · 2025", en: "Practical Guide · 2025" },
+    points: [
+      { id: "Protokol Data Protection Officer (DPO) internal", en: "Internal Data Protection Officer (DPO) protocols" },
+      { id: "Mekanisme pelaporan insiden kebocoran maksimal 3x24 jam", en: "72-hour mandatory breach notification procedures" },
+      { id: "Klausul pemrosesan data lintas batas (Cross-Border Data Transfer)", en: "Cross-border data transfer safeguards" },
+    ],
+  },
+  {
+    category: "data",
+    catLabel: { id: "Kedaulatan Data", en: "Data Sovereignty" },
+    title: {
+      id: "Kedaulatan Data tanpa Kapasitas Industri Komputasi Domestik Adalah Ilusi",
+      en: "Data Sovereignty without Domestic Compute Capacity is an Illusion",
+    },
+    summary: {
+      id: "Kritik substantif atas kebijakan penempatan pusat data (data center) yang hanya fokus pada lokasi fisik tanpa menyentuh kepemilikan chip, GPU cluster, dan kapasitas rekayasa model kecerdasan lokal.",
+      en: "Substantive critique of data centre residency mandates that fixate on physical soil while leaving GPU infrastructure and foundation model engineering entirely offshore.",
+    },
+    status: { id: "Kajian Kebijakan", en: "Policy Whitepaper" },
+    points: [
+      { id: "Ketergantungan infrastruktur cloud global", en: "Dependencies on global hyperscaler cloud backbones" },
+      { id: "Model AI nasional untuk bahasa & budaya nusantara", en: "Sovereign foundation models for regional languages" },
+      { id: "Keamanan rantai pasok silikon & server", en: "Silicon & server supply chain security" },
+    ],
+  },
+  {
+    category: "ekonomi",
+    catLabel: { id: "Ekonomi & Talenta", en: "Economy & Talent" },
+    title: {
+      id: "Amplifikasi Talenta Digital Daerah: Menembus Kesenjangan dari Pelosok ke Panggung Nasional",
+      en: "Amplifying Regional Digital Talent: Bridging the Divide from Remote Regencies to National Prominence",
+    },
+    summary: {
+      id: "Refleksi empiris dari Musi Rawas Utara. Membongkar mitos bahwa talenta berkualitas hanya lahir di kota-kota besar jika ekosistem pembelajaran jarak jauh dan inkubasi berbasis proyek dibuka secara merata.",
+      en: "Empirical reflections from Musi Rawas Utara. Debunking the notion that top-tier technology talent is exclusive to metropolises when equitable project-based incubation is unlocked.",
+    },
+    status: { id: "Esai Kebijakan", en: "Policy Essay" },
+    points: [
+      { id: "Peran kurikulum industri terapan di kampus daerah", en: "Applied industry curricula in regional universities" },
+      { id: "Infrastruktur konektivitas fixed broadband terjangkau", en: "Affordable fixed broadband infrastructure in remote regencies" },
+      { id: "Pendanaan berbasis dampak untuk inisiator muda daerah", en: "Impact-driven seed capital for rural tech innovators" },
+    ],
+  },
+];
+---
+
+<Base lang={lang} title={title} description={description} path={currentPath}>
+  <main id="isi">
+    <PageHeader
+      lang={lang}
+      currentPath={currentPath}
+      kicker={lang === "id" ? "POLICY BRIEFS & ARTIKEL SUBSTANTIF" : "POLICY BRIEFS & WRITING"}
+      title={lang === "id" ? "Kajian yang Berangkat dari Meja Kerja." : "Policy Briefs Grounded in Practice."}
+      subtitle={lang === "id"
+        ? "Bukan blog harian atau opini seremonial. Setiap tulisan adalah analisis mendalam atas perumusan regulasi teknologi, kepatuhan data, dan tantangan implementasi nyata di industri."
+        : "Not a daily blog or ceremonial commentary. Every brief is a rigorous inquiry into technology rulemaking, data compliance, and pragmatic operational execution."}
+      ctaText={lang === "id" ? "Diskusikan Kajian" : "Discuss a Brief"}
+      ctaHref={waLink("brief", lang)}
+    />
+
+    <!-- Interactive Filter & Briefs Grid -->
+    <section class="pad py-section" style="background:var(--color-mist)">
+      <div class="flex flex-col gap-8">
+        <!-- Filter Bar -->
+        <div class="filter-bar" role="tablist" aria-label="Filter Kategori">
+          <button class="filter-btn filter-btn--active" data-filter="all" type="button">
+            {lang === "id" ? "Semua Kajian" : "All Briefs"}
+          </button>
+          <button class="filter-btn" data-filter="ai" type="button">
+            {lang === "id" ? "Tata Kelola AI" : "AI Governance"}
+          </button>
+          <button class="filter-btn" data-filter="pdp" type="button">
+            {lang === "id" ? "Privasi & UU PDP" : "Privacy & PDP"}
+          </button>
+          <button class="filter-btn" data-filter="data" type="button">
+            {lang === "id" ? "Kedaulatan Data" : "Data Sovereignty"}
+          </button>
+          <button class="filter-btn" data-filter="ekonomi" type="button">
+            {lang === "id" ? "Ekonomi & Talenta" : "Economy & Talent"}
+          </button>
+        </div>
+
+        <!-- Briefs List -->
+        <div class="grid gap-6 lg:grid-cols-2" id="briefs-grid">
+          {articles.map((art) => (
+            <article class="brief-card" data-category={art.category}>
+              <div class="flex items-center justify-between">
+                <span class="brief-category">{art.catLabel[lang]}</span>
+                <span class="brief-status">{art.status[lang]}</span>
+              </div>
+              <h2 class="disp brief-title">{art.title[lang]}</h2>
+              <p class="brief-summary">{art.summary[lang]}</p>
+              <div class="brief-points">
+                <p class="brief-points-label">{lang === "id" ? "Pokok Bahasan Utama:" : "Core Focus:"}</p>
+                <ul>
+                  {art.points.map((pt) => (
+                    <li>{pt[lang]}</li>
+                  ))}
+                </ul>
+              </div>
+              <div class="brief-action">
+                <a class="pill pill--dark" href={waLink("brief", lang)}>
+                  <span class="dot"><Icon name="arrow-right" /></span>
+                  {lang === "id" ? "Minta Naskah Lengkap" : "Request Full Brief"}
+                </a>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Callout Consultation -->
+    <section class="pad py-section" style="background:var(--color-night);color:#fff">
+      <div class="grid gap-8 lg:grid-cols-12 items-center">
+        <div class="lg:col-span-8 flex flex-col gap-4">
+          <p class="eyebrow">{lang === "id" ? "KONSULTASI KEBIJAKAN" : "POLICY CONSULTING"}</p>
+          <h2 class="disp type-2">
+            {lang === "id"
+              ? "Membutuhkan Policy Brief atau Telaah Regulasi Khusus?"
+              : "Need a Custom Policy Brief or Regulatory Assessment?"}
+          </h2>
+          <p style="color:var(--color-fog);font-size:16px;line-height:1.6;max-width:64ch">
+            {lang === "id"
+              ? "Nbie Solutions menyusun telaah regulasi, masukan uji publik, dan analisis kesiapan kepatuhan AI & data pribadi untuk asosiasi industri, institusi pemerintah, maupun perusahaan rintisan."
+              : "Nbie Solutions formulates regulatory submissions, public consultation briefs, and AI & data compliance assessments for industry bodies, state agencies, and enterprise ventures."}
+          </p>
+        </div>
+        <div class="lg:col-span-4 flex justify-start lg:justify-end">
+          <a class="pill" href={waLink("brief", lang)}>
+            <span class="dot"><Icon name="arrow-right" /></span>
+            {lang === "id" ? "Konsultasi Kebijakan" : "Consult on Policy"}
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer lang={lang} />
+</Base>
+
+<style>
+  .filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+  }
+  .filter-btn {
+    background: #ffffff;
+    border: 1px solid rgba(8, 17, 31, 0.12);
+    border-radius: 999px;
+    padding: 8px 18px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-ink);
+    cursor: pointer;
+    transition: all 0.25s ease;
+  }
+  .filter-btn:hover {
+    border-color: var(--color-ink);
+  }
+  .filter-btn--active {
+    background: var(--color-night) !important;
+    color: #ffffff !important;
+    border-color: var(--color-night) !important;
+  }
+
+  .brief-card {
+    background: #ffffff;
+    border: 1px solid rgba(8, 17, 31, 0.1);
+    border-radius: 20px;
+    padding: clamp(24px, 3.5vw, 36px);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    box-shadow: 0 8px 24px -10px rgba(11, 21, 38, 0.06);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+  }
+  .brief-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 36px -12px rgba(11, 21, 38, 0.12);
+  }
+  .brief-category {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--color-violet);
+  }
+  .brief-status {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--color-mute);
+    background: var(--color-haze);
+    padding: 3px 10px;
+    border-radius: 6px;
+  }
+  .brief-title {
+    font-size: clamp(20px, 2.2vw, 24px);
+    line-height: 1.25;
+    color: var(--color-ink);
+  }
+  .brief-summary {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--color-mute);
+  }
+  .brief-points {
+    background: var(--color-haze);
+    border: 1px solid rgba(8, 17, 31, 0.06);
+    border-radius: 12px;
+    padding: 16px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .brief-points-label {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--color-ink);
+  }
+  .brief-points ul {
+    margin: 0;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 14px;
+    color: var(--color-mute);
+  }
+  .brief-action {
+    margin-top: auto;
+    padding-top: 8px;
+  }
+  .eyebrow {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-lilac);
+  }
+</style>
+
+<script>
+  const filterBtns = document.querySelectorAll<HTMLButtonElement>(".filter-btn");
+  const cards = document.querySelectorAll<HTMLElement>(".brief-card");
+
+  filterBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      filterBtns.forEach((b) => b.classList.remove("filter-btn--active"));
+      btn.classList.add("filter-btn--active");
+
+      const filter = btn.getAttribute("data-filter") ?? "all";
+      cards.forEach((card) => {
+        if (filter === "all" || card.getAttribute("data-category") === filter) {
+          card.style.display = "flex";
+        } else {
+          card.style.display = "none";
+        }
+      });
+    });
+  });
+</script>

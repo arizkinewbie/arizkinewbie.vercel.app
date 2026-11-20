@@ -1,0 +1,402 @@
+---
+/**
+ * Halaman Kontak Interaktif.
+ * Dilengkapi Interactive WhatsApp Message Builder (seperti David Alfa Sunarna),
+ * informasi saluran resmi, dan media kit downloader.
+ */
+import Base from "../../layouts/Base.astro";
+import PageHeader from "../../components/PageHeader.astro";
+import Footer from "../../components/Footer.astro";
+import Icon from "../../components/Icon.astro";
+import type { Lang } from "../../i18n/ui";
+import { site } from "../../data/site";
+
+export function getStaticPaths() {
+  return [{ params: { lang: "id" } }, { params: { lang: "en" } }];
+}
+
+const { lang } = Astro.params as { lang: Lang };
+const currentPath = `/${lang}/kontak/`;
+
+const title =
+  lang === "id"
+    ? "Kontak & Kolaborasi | Arizki Putra Rahman"
+    : "Contact & Collaboration | Arizki Putra Rahman";
+const description =
+  lang === "id"
+    ? "Hubungi langsung Arizki Putra Rahman untuk undangan pembicara, kajian regulasi tata kelola AI, kolaborasi teknologi Nbie Solutions, atau permohonan media kit."
+    : "Get in touch directly with Arizki Putra Rahman for speaking engagements, AI regulatory briefs, venture collaborations, or media kits.";
+---
+
+<Base lang={lang} title={title} description={description} path={currentPath}>
+  <main id="isi">
+    <PageHeader
+      lang={lang}
+      currentPath={currentPath}
+      kicker={lang === "id" ? "SALURAN RESMI & KOLABORASI" : "DIRECT INQUIRIES & COLLABORATION"}
+      title={lang === "id" ? "Mari Bicara Soal yang Substantif." : "Let's Discuss Something Substantive."}
+      subtitle={lang === "id"
+        ? "Gunakan formulir pembuat pesan interaktif di bawah untuk mengarahkan pesan langsung ke WhatsApp saya sesuai kebutuhan spesifik Anda."
+        : "Use the interactive WhatsApp composer below to format your inquiry straight to my direct line."}
+    />
+
+    <!-- Interactive Section -->
+    <section class="pad py-section" style="background:var(--color-mist)">
+      <div class="grid gap-10 lg:grid-cols-12 items-start">
+        <!-- Interactive WhatsApp Composer -->
+        <div class="lg:col-span-7 wa-composer">
+          <div class="flex flex-col gap-2">
+            <span class="composer-badge">{lang === "id" ? "PEMBUAT PESAN WHATSAPP" : "WHATSAPP MESSAGE BUILDER"}</span>
+            <h2 class="disp" style="font-size:26px">
+              {lang === "id" ? "Format Pesan Anda Secara Presisi" : "Format Your Message with Precision"}
+            </h2>
+            <p style="color:var(--color-mute);font-size:15px;margin:0">
+              {lang === "id"
+                ? "Pilih opsi di bawah, kami akan otomatis merangkai pesan terstruktur untuk dikirim via WhatsApp."
+                : "Select the options below, and we will structure a clear inquiry directly to WhatsApp."}
+            </p>
+          </div>
+
+          <!-- Step 1: Kebutuhan -->
+          <div class="composer-field-group">
+            <label class="composer-label">{lang === "id" ? "1. Jenis Kebutuhan / Keperluan" : "1. Type of Inquiry"}</label>
+            <div class="option-grid" id="need-options">
+              <button
+                type="button"
+                class="option-pill option-pill--active"
+                data-val={lang === "id" ? "undangan pembicara / keynote speaker" : "speaking engagement / keynote invitation"}
+              >
+                🎤 {lang === "id" ? "Undang Pembicara" : "Keynote Speaker"}
+              </button>
+              <button
+                type="button"
+                class="option-pill"
+                data-val={lang === "id" ? "kajian regulasi / policy brief tata kelola AI" : "AI governance policy brief / regulatory analysis"}
+              >
+                📑 {lang === "id" ? "Policy Brief & Regulasi" : "Policy Brief & Review"}
+              </button>
+              <button
+                type="button"
+                class="option-pill"
+                data-val={lang === "id" ? "kerja sama proyek teknologi & AI (Nbie Solutions)" : "technology & AI enterprise collaboration"}
+              >
+                💼 {lang === "id" ? "Proyek Teknologi & AI" : "Tech & AI Venture"}
+              </button>
+              <button
+                type="button"
+                class="option-pill"
+                data-val={lang === "id" ? "wawancara media atau liputan jurnalistik" : "media interview or journalistic coverage"}
+              >
+                🎙️ {lang === "id" ? "Wawancara Media" : "Media & Press"}
+              </button>
+            </div>
+          </div>
+
+          <!-- Step 2: Timeline -->
+          <div class="composer-field-group">
+            <label class="composer-label">{lang === "id" ? "2. Estimasi Waktu / Target Pelaksanaan" : "2. Timeline / Target Schedule"}</label>
+            <div class="option-grid" id="time-options">
+              <button
+                type="button"
+                class="option-pill option-pill--active"
+                data-val={lang === "id" ? "secepatnya / bulan ini" : "urgently / this month"}
+              >
+                ⚡ {lang === "id" ? "Mendesak / Bulan Ini" : "Urgent / This Month"}
+              </button>
+              <button
+                type="button"
+                class="option-pill"
+                data-val={lang === "id" ? "dalam 1 hingga 3 bulan ke depan" : "within 1 to 3 months"}
+              >
+                📅 {lang === "id" ? "1 – 3 Bulan ke Depan" : "1–3 Months Ahead"}
+              </button>
+              <button
+                type="button"
+                class="option-pill"
+                data-val={lang === "id" ? "tahap penjajakan / fleksibel" : "exploratory / flexible"}
+              >
+                🔍 {lang === "id" ? "Tahap Penjajakan" : "Exploratory Phase"}
+              </button>
+            </div>
+          </div>
+
+          <!-- Step 3: Identitas Pengirim -->
+          <div class="grid gap-4 sm:grid-cols-2">
+            <div class="composer-field-group">
+              <label class="composer-label" for="inp-name">{lang === "id" ? "Nama Lengkap" : "Full Name"}</label>
+              <input
+                type="text"
+                id="inp-name"
+                class="composer-input"
+                placeholder={lang === "id" ? "Contoh: Budi Pratama" : "e.g. John Doe"}
+              />
+            </div>
+            <div class="composer-field-group">
+              <label class="composer-label" for="inp-org">{lang === "id" ? "Organisasi / Perusahaan" : "Organization / Company"}</label>
+              <input
+                type="text"
+                id="inp-org"
+                class="composer-input"
+                placeholder={lang === "id" ? "Contoh: DPN PERMAHI / PT..." : "e.g. Acme Corp / Ministry..."}
+              />
+            </div>
+          </div>
+
+          <!-- Step 4: Catatan Singkat -->
+          <div class="composer-field-group">
+            <label class="composer-label" for="inp-note">{lang === "id" ? "Topik Bahasan / Catatan Tambahan (Opsional)" : "Key Topic / Brief Note (Optional)"}</label>
+            <textarea
+              id="inp-note"
+              class="composer-input"
+              rows="3"
+              placeholder={lang === "id" ? "Tuliskan topik acara, durasi sesi, atau rincian kebutuhan Anda..." : "Describe session topic, event duration, or project details..."}
+            ></textarea>
+          </div>
+
+          <!-- Send Action Button -->
+          <div class="composer-action">
+            <a id="btn-send-wa" class="pill pill--dark composer-send-btn" href="#" target="_blank" rel="noopener">
+              <span class="dot"><Icon name="arrow-right" /></span>
+              <span>{lang === "id" ? "Kirim Pesan via WhatsApp →" : "Send Inquiry via WhatsApp →"}</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Direct Channels & Office Info -->
+        <div class="lg:col-span-5 flex flex-col gap-6">
+          <div class="info-card">
+            <p class="eyebrow">{lang === "id" ? "KONTAK LANGSUNG" : "DIRECT CHANNELS"}</p>
+            <div class="flex flex-col gap-4">
+              <div class="info-row">
+                <span class="info-lbl">WhatsApp Bisnis</span>
+                <a href={`https://wa.me/${site.phoneRaw}`} target="_blank" rel="noopener" class="info-val">
+                  {site.phone}
+                </a>
+              </div>
+              <div class="info-row">
+                <span class="info-lbl">Email Resmi</span>
+                <a href={`mailto:${site.email}`} class="info-val">
+                  {site.email}
+                </a>
+              </div>
+              <div class="info-row">
+                <span class="info-lbl">LinkedIn Resmi</span>
+                <a href={site.linkedin} target="_blank" rel="noopener" class="info-val">
+                  linkedin.com/in/arizkinewbie
+                </a>
+              </div>
+              <div class="info-row">
+                <span class="info-lbl">Domisili Kantor</span>
+                <span class="info-val-static">Jl. Pisangan Baru Tengah 2 No.294, Jakarta</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Media Kit Info -->
+          <div class="info-card info-card--dark">
+            <p class="eyebrow" style="color:var(--color-lilac)">{lang === "id" ? "MEDIA & PANITIA ACARA" : "MEDIA & COMMITTEES"}</p>
+            <h3 class="disp" style="font-size:20px;color:#fff">
+              {lang === "id" ? "Paket Media Kit Resmi" : "Official Media Kit Package"}
+            </h3>
+            <p style="font-size:14px;color:var(--color-fog);line-height:1.55;margin:0">
+              {lang === "id"
+                ? "Dapatkan biografi resmi versi singkat (100 kata), arsip foto portrait resolusi tinggi, serta ringkasan topik materi paparan siap tayang."
+                : "Obtain the executive 100-word bio, high-resolution portrait headshots, and turnkey keynote session summaries."}
+            </p>
+            <div style="margin-top:6px">
+              <a class="pill" href={`https://wa.me/${site.phoneRaw}?text=${encodeURIComponent("Halo Arizki, saya panitia/media dan membutuhkan file Media Kit resmi Anda.")}`} target="_blank" rel="noopener">
+                <span class="dot"><Icon name="arrow-right" /></span>
+                {lang === "id" ? "Minta Media Kit" : "Request Media Kit"}
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer lang={lang} />
+</Base>
+
+<style>
+  .wa-composer {
+    background: #ffffff;
+    border: 1px solid rgba(8, 17, 31, 0.1);
+    border-radius: 24px;
+    padding: clamp(24px, 4vw, 40px);
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    box-shadow: 0 12px 36px -12px rgba(11, 21, 38, 0.08);
+  }
+  .composer-badge {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-violet);
+  }
+  .composer-field-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .composer-label {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    color: var(--color-ink);
+  }
+  .option-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .option-pill {
+    background: var(--color-haze);
+    border: 1px solid rgba(8, 17, 31, 0.1);
+    border-radius: 999px;
+    padding: 8px 16px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-ink);
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .option-pill:hover {
+    border-color: var(--color-ink);
+  }
+  .option-pill--active {
+    background: var(--color-night) !important;
+    color: #ffffff !important;
+    border-color: var(--color-night) !important;
+  }
+  .composer-input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px 16px;
+    border-radius: 12px;
+    border: 1.5px solid rgba(8, 17, 31, 0.12);
+    background: var(--color-haze);
+    font-family: inherit;
+    font-size: 15px;
+    color: var(--color-ink);
+    transition: border-color 0.2s ease;
+  }
+  .composer-input:focus {
+    outline: none;
+    border-color: var(--color-sky);
+    background: #ffffff;
+  }
+  .composer-action {
+    padding-top: 8px;
+  }
+  .composer-send-btn {
+    width: 100%;
+    justify-content: center;
+    font-size: 16px;
+    padding: 14px 24px;
+  }
+  .info-card {
+    background: #ffffff;
+    border: 1px solid rgba(8, 17, 31, 0.1);
+    border-radius: 20px;
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    box-shadow: 0 8px 24px -10px rgba(11, 21, 38, 0.06);
+  }
+  .info-card--dark {
+    background: var(--color-night);
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.14);
+  }
+  .info-row {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+  .info-lbl {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--color-mute);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .info-val {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--color-ink);
+    text-decoration: none;
+  }
+  .info-val:hover {
+    text-decoration: underline;
+    text-underline-offset: 0.25em;
+  }
+  .info-val-static {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--color-ink);
+    line-height: 1.4;
+  }
+  .eyebrow {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-violet);
+  }
+</style>
+
+<script>
+  let selectedNeed = "undangan pembicara / keynote speaker";
+  let selectedTime = "secepatnya / bulan ini";
+
+  const needPills = document.querySelectorAll<HTMLButtonElement>("#need-options .option-pill");
+  const timePills = document.querySelectorAll<HTMLButtonElement>("#time-options .option-pill");
+  const inpName = document.getElementById("inp-name") as HTMLInputElement | null;
+  const inpOrg = document.getElementById("inp-org") as HTMLInputElement | null;
+  const inpNote = document.getElementById("inp-note") as HTMLTextAreaElement | null;
+  const btnSend = document.getElementById("btn-send-wa") as HTMLAnchorElement | null;
+
+  function updateWaLink() {
+    const name = inpName?.value.trim() || "";
+    const org = inpOrg?.value.trim() || "";
+    const note = inpNote?.value.trim() || "";
+
+    let text = `Halo Arizki, saya ingin berdiskusi mengenai ${selectedNeed}.\n`;
+    text += `Target waktu: ${selectedTime}.\n`;
+    if (name) text += `Nama: ${name}\n`;
+    if (org) text += `Institusi/Perusahaan: ${org}\n`;
+    if (note) text += `Catatan/Topik: ${note}\n`;
+
+    const encoded = encodeURIComponent(text);
+    if (btnSend) {
+      btnSend.href = `https://wa.me/6282289486808?text=${encoded}`;
+    }
+  }
+
+  needPills.forEach((p) => {
+    p.addEventListener("click", () => {
+      needPills.forEach((x) => x.classList.remove("option-pill--active"));
+      p.classList.add("option-pill--active");
+      selectedNeed = p.getAttribute("data-val") ?? "";
+      updateWaLink();
+    });
+  });
+
+  timePills.forEach((p) => {
+    p.addEventListener("click", () => {
+      timePills.forEach((x) => x.classList.remove("option-pill--active"));
+      p.classList.add("option-pill--active");
+      selectedTime = p.getAttribute("data-val") ?? "";
+      updateWaLink();
+    });
+  });
+
+  inpName?.addEventListener("input", updateWaLink);
+  inpOrg?.addEventListener("input", updateWaLink);
+  inpNote?.addEventListener("input", updateWaLink);
+
+  updateWaLink();
+</script>

@@ -2,7 +2,6 @@
 /** Section Pemikiran — grid policy brief. */
 import { useTranslations, type Lang } from "../i18n/ui";
 import { briefs } from "../data/content";
-import { waLink } from "../data/site";
 
 interface Props {
   lang: Lang;
@@ -18,7 +17,7 @@ const t = useTranslations(lang);
         <h2 class="disp type-2">{t("pemikiran.h2")}</h2>
         <p class="max-w-prose" style="color:var(--color-mute);font-size:16px">{t("pemikiran.sub")}</p>
       </div>
-      <a class="pill pill--onlight" href={waLink("brief", lang)}>{t("pemikiran.cta")}</a>
+      <a class="pill pill--onlight" href={`/${lang}/pemikiran/`}>{lang === "id" ? "Semua Policy Briefs →" : "All Policy Briefs →"}</a>
     </div>
 
     <div class="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">

@@ -19,8 +19,8 @@ export const proof = [
     v: { id: "Perusahaan tech yang dipimpin & dibangun", en: "Technology companies led and built" },
   },
   {
-    k: { id: "Kemendagri", en: "Home Ministry" },
-    v: { id: "Tenaga Ahli Tata Kelola TI, 2024–2025", en: "Expert on IT Governance, 2024–2025" },
+    k: { id: "Telkomsel", en: "Telkomsel" },
+    v: { id: "Best Talent IndonesiaNEXT Season 7", en: "Best Talent at IndonesiaNEXT Season 7" },
   },
   {
     k: { id: "Muratara", en: "Muratara" },
@@ -79,9 +79,9 @@ export const talks = [
     href: "https://stitml.ac.id/artikel/putra-daerah-sumsel-asal-muratara-arizki-putra-rahman-bicara-tata-kelola-ai-di-national-law-forum-2026",
   },
   {
-    yr: { id: "2024–25", en: "2024–25" },
-    t: { id: "Tenaga Ahli Tata Kelola TI", en: "Expert on IT Governance" },
-    m: { id: "Kementerian Dalam Negeri", en: "Ministry of Home Affairs" },
+    yr: { id: "2023", en: "2023" },
+    t: { id: "IndonesiaNEXT Season 7 — Best Talent", en: "IndonesiaNEXT Season 7 — Best Talent" },
+    m: { id: "Telkomsel", en: "Telkomsel" },
     href: "",
   },
   {

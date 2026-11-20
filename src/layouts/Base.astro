@@ -68,9 +68,11 @@ const ogImage = new URL("/og.jpg", site.url).href;
     />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="stylesheet" href="/css/tech-scroll.css" />
   </head>
   <body>
     <a class="skip-link" href="#isi">{lang === "id" ? "Langsung ke isi" : "Skip to content"}</a>
     <slot />
+    <script defer src="/js/tech-scroll.js"></script>
   </body>
 </html>

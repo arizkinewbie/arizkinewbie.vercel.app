@@ -15,6 +15,11 @@ const t = useTranslations(lang);
     <div class="lg:col-span-4 flex flex-col gap-4">
       <h2 class="disp type-2">{t("karya.h2")}</h2>
       <p style="color:var(--color-mute);font-size:16px">{t("karya.sub")}</p>
+      <div style="margin-top:8px">
+        <a class="pill pill--onlight" href={`/${lang}/karya/`}>
+          {lang === "id" ? "Detail Produk & Arsitektur →" : "Ventures & Architecture →"}
+        </a>
+      </div>
     </div>
 
     <div class="lg:col-span-8 grid gap-4 sm:grid-cols-2">

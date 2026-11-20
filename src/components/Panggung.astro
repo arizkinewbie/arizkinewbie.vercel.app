@@ -38,6 +38,11 @@ const speaking = [...talks].sort((a, b) => Number(b.yr.id.slice(0, 4)) - Number(
           </div>
         ))}
       </div>
+      <div style="margin-top:20px;display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+        <a class="pill pill--ghost" href={`/${lang}/panggung/`}>
+          {lang === "id" ? "Buka Arsip Panggung Lengkap →" : "View Full Speaking Archive →"}
+        </a>
+      </div>
       <p style="color:var(--color-fog);font-size:13px;margin-top:16px">{t("panggung.note")}</p>
     </div>
   </div>

@@ -1,0 +1,263 @@
+---
+/**
+ * Halaman Tentang & Biografi Mendalam.
+ * Dari Muratara ke Panggung Kebijakan Nasional: Akar, Kepemimpinan, dan Nilai.
+ */
+import Base from "../../layouts/Base.astro";
+import PageHeader from "../../components/PageHeader.astro";
+import Footer from "../../components/Footer.astro";
+import Icon from "../../components/Icon.astro";
+import type { Lang } from "../../i18n/ui";
+
+export function getStaticPaths() {
+  return [{ params: { lang: "id" } }, { params: { lang: "en" } }];
+}
+
+const { lang } = Astro.params as { lang: Lang };
+const currentPath = `/${lang}/tentang/`;
+
+const title =
+  lang === "id"
+    ? "Tentang Arizki Putra Rahman | Profil & Biografi"
+    : "About Arizki Putra Rahman | Profile & Journey";
+const description =
+  lang === "id"
+    ? "Biografi resmi Arizki Putra Rahman: Dari Desa Remban (Muratara), Ketua BEM Esa Unggul, Best Talent Telkomsel, hingga Founder Nbie & pengawal tata kelola AI nasional."
+    : "The official biography of Arizki Putra Rahman: From Remban Village (Muratara), student union leader, Telkomsel Best Talent, to tech founder and AI policy leader.";
+
+const chapters = [
+  {
+    num: "01",
+    tag: { id: "Akar & Nilai Integritas", en: "Roots & Core Values" },
+    title: { id: "Ditempa dari Desa Remban, Musi Rawas Utara", en: "Forged in Remban Village, Musi Rawas Utara" },
+    text: {
+      id: "Saya lahir dan dibesarkan di Desa Remban, Kecamatan Rawas Ulu, Kabupaten Musi Rawas Utara (Muratara), Sumatera Selatan. Tumbuh di keluarga insan pers — putra dari Aminurrahman (tokoh pers daerah dan mantan Ketua PWI Muratara) dan Lina — saya terbiasa melihat dunia dengan kacamata kritis, kejujuran pada fakta, serta kepedulian mendalam terhadap keadilan sosial bagi masyarakat pelosok.",
+      en: "I was born and raised in Remban Village, Rawas Ulu, Musi Rawas Utara (Muratara), South Sumatra. Growing up in a journalistic household — son of regional press veteran Aminurrahman and Lina — I was taught to observe the world through critical inquiry, unwavering fidelity to truth, and deep empathy for regional communities.",
+    },
+  },
+  {
+    num: "02",
+    tag: { id: "Akademik & Kepemimpinan", en: "Academia & Student Leadership" },
+    title: { id: "Ketua BEM KHI Universitas Esa Unggul", en: "Student Union Leadership at Esa Unggul" },
+    text: {
+      id: "Menempuh pendidikan Teknik Informatika di Fakultas Ilmu Komputer Universitas Esa Unggul (Kampus Bekasi). Pada periode 2021/2022, saya dipercaya memimpin ribuan mahasiswa sebagai Ketua BEM KHI. Di masa inilah keahlian berorganisasi, manajemen krisis, diplomasi kebijakan kampus, dan kepemimpinan tim berskala besar ditempa secara nyata.",
+      en: "Pursuing Informatics Engineering at the Faculty of Computer Science, Universitas Esa Unggul (Bekasi). In 2021/2022, I was elected Chairperson of BEM KHI. It was here that organizational strategy, crisis diplomacy, and institutional governance were honed under intense operational reality.",
+    },
+  },
+  {
+    num: "03",
+    tag: { id: "Pengakuan Nasional", en: "National Recognition" },
+    title: { id: "Distinction Graduate & Best Talent Telkomsel", en: "Distinction Honors & Telkomsel Best Talent" },
+    text: {
+      id: "Komitmen pada keunggulan teknis membawa saya lulus dengan predikat kehormatan (Distinction Graduate) dari program inkubasi Bangkit Academy yang didukung Google, GoTo, dan Traveloka. Di tahun yang sama, saya terpilih sebagai Best Talent IndonesiaNEXT Season 7 oleh Telkomsel (2023), membuktikan bahwa putra daerah mampu bersaing di barisan terdepan talenta digital nasional.",
+      en: "My commitment to technical depth led to graduating with Distinction honors from Bangkit Academy (backed by Google, GoTo, and Traveloka). That same year, I was awarded Best Talent at IndonesiaNEXT Season 7 by Telkomsel (2023), demonstrating that regional talents can stand at the very vanguard of national tech capability.",
+    },
+  },
+  {
+    num: "04",
+    tag: { id: "Wirausaha & Panggung Kebijakan", en: "Venture Leadership & Policy" },
+    title: { id: "Membangun Nbie, SymptoMed, dan Mengawal AI", en: "Building Ventures and Championing Sovereign AI" },
+    text: {
+      id: "Saya kemudian mendirikan Nbie Solutions sebagai rumah solusi teknologi dan kajian kebijakan, serta ikut membidani SymptoMed Healthtech. Keterlibatan langsung di industri membawa saya ke panggung perumusan kebijakan publik — hadir sebagai pembicara utama di National Law Forum 2026 bersama pimpinan kementerian dan pakar hukum untuk memastikan regulasi AI dan UU PDP berpihak pada kemajuan bangsa.",
+      en: "I subsequently founded Nbie Solutions to deliver enterprise architecture and policy briefs, while co-founding SymptoMed Healthtech. This ground-level venture leadership naturally projected me onto the national policy stage — speaking at the National Law Forum 2026 alongside government ministers and legal scholars to ensure that AI and privacy governance empower rather than stifle homegrown innovation.",
+    },
+  },
+];
+
+const values = [
+  {
+    label: { id: "Substansi di Atas Seremonial", en: "Substance Over Ceremony" },
+    desc: {
+      id: "Kebijakan dan kode program dinilai dari dampaknya pada kehidupan orang banyak, bukan sekadar jargon panggung.",
+      en: "Policy and code are judged by their real impact on people's livelihoods, not superficial conference catchphrases.",
+    },
+  },
+  {
+    label: { id: "Regulasi yang Membumi", en: "Pragmatic Regulation" },
+    desc: {
+      id: "Aturan hukum teknologi harus bisa dipatuhi oleh pelaku usaha kecil dan talenta lokal, bukan hanya menguntungkan korporasi raksasa.",
+      en: "Tech regulations must be executable by domestic startups and regional operators, not solely designed for global monopolies.",
+    },
+  },
+  {
+    label: { id: "Kemandirian Ekosistem Digital", en: "Digital Self-Reliance" },
+    desc: {
+      id: "Indonesia harus menjadi produsen dan pemilik kedaulatan teknologi, bukan sekadar pasar konsumtif bagi platform luar negeri.",
+      en: "Indonesia must cultivate indigenous sovereign compute and model capacity, rather than remaining a passive consumer market.",
+    },
+  },
+];
+---
+
+<Base lang={lang} title={title} description={description} path={currentPath}>
+  <main id="isi">
+    <PageHeader
+      lang={lang}
+      currentPath={currentPath}
+      kicker={lang === "id" ? "BIOGRAFI & PERJALANAN" : "BIOGRAPHY & JOURNEY"}
+      title={lang === "id" ? "Dari Muratara ke Panggung Kebijakan." : "From Muratara to the Policy Table."}
+      subtitle={lang === "id"
+        ? "Perjalanan seorang putra daerah dari Sumatera Selatan: memimpin organisasi kampus, membangun dua startup teknologi, hingga mengawal perumusan regulasi kecerdasan buatan dan data pribadi di tingkat nasional."
+        : "The journey of a South Sumatran native: from student union presidency to founding technology ventures and shaping national artificial intelligence policy."}
+      ctaText={lang === "id" ? "Hubungi Saya" : "Get in Touch"}
+      ctaHref={`/${lang}/kontak/`}
+    />
+
+    <!-- Quick Stats Profile Grid -->
+    <section class="pad py-section" style="background:var(--color-mist)">
+      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div class="card stat-card">
+          <span class="stat-kicker">Asal Daerah</span>
+          <h3 class="disp" style="font-size:24px">Muratara</h3>
+          <p style="font-size:14px;color:var(--color-mute);margin:0">Desa Remban, Rawas Ulu, Sumatera Selatan.</p>
+        </div>
+        <div class="card stat-card">
+          <span class="stat-kicker">Kepemimpinan</span>
+          <h3 class="disp" style="font-size:24px">Ketua BEM</h3>
+          <p style="font-size:14px;color:var(--color-mute);margin:0">BEM KHI Universitas Esa Unggul (2021/2022).</p>
+        </div>
+        <div class="card stat-card">
+          <span class="stat-kicker">Prestasi Nasional</span>
+          <h3 class="disp" style="font-size:24px">Best Talent</h3>
+          <p style="font-size:14px;color:var(--color-mute);margin:0">IndonesiaNEXT Season 7 (Telkomsel 2023).</p>
+        </div>
+        <div class="card stat-card">
+          <span class="stat-kicker">Peran Aktif</span>
+          <h3 class="disp" style="font-size:24px">CEO &amp; CTO</h3>
+          <p style="font-size:14px;color:var(--color-mute);margin:0">Nbie Solutions &amp; SymptoMed Healthtech.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Narrative Chapters -->
+    <section class="pad py-section" style="background:var(--color-haze)">
+      <div class="flex flex-col gap-10 max-w-4xl mx-auto">
+        <div class="flex flex-col gap-3">
+          <p class="kicker">{lang === "id" ? "REKAM JEJAK & EPISODE KEHIDUPAN" : "CHAPTERS OF LEADERSHIP"}</p>
+          <h2 class="disp type-1">{lang === "id" ? "Babak Perjalanan" : "The Journey Unfolded"}</h2>
+        </div>
+
+        <div class="flex flex-col gap-8">
+          {chapters.map((ch) => (
+            <article class="chapter-card">
+              <div class="chapter-num">{ch.num}</div>
+              <div class="flex flex-col gap-3">
+                <span class="chapter-tag">{ch.tag[lang]}</span>
+                <h3 class="disp" style="font-size:24px">{ch.title[lang]}</h3>
+                <p style="font-size:16px;line-height:1.65;color:var(--color-mute);margin:0">{ch.text[lang]}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Core Values -->
+    <section class="pad py-section" style="background:var(--color-night);color:#fff">
+      <div class="flex flex-col gap-8">
+        <div class="flex flex-col gap-3 max-w-prose">
+          <p class="eyebrow">{lang === "id" ? "PRINSIP & INTEGRITAS" : "CORE PRINCIPLES"}</p>
+          <h2 class="disp type-2">{lang === "id" ? "Nilai yang Saya Pegang Teguh" : "The Principles That Guide Me"}</h2>
+          <p style="color:var(--color-fog);font-size:16px">
+            {lang === "id"
+              ? "Prinsip kerja yang memandu setiap baris kode yang dirancang, setiap masukan pasal yang ditulis, dan setiap diskusi publik yang dihadiri."
+              : "Guiding tenets that govern every line of code deployed, every policy submission authored, and every public debate entered."}
+          </p>
+        </div>
+
+        <div class="grid gap-6 md:grid-cols-3">
+          {values.map((v) => (
+            <div class="val-card">
+              <h3 class="disp" style="font-size:20px;color:var(--color-lilac)">{v.label[lang]}</h3>
+              <p style="font-size:15px;color:var(--color-fog);line-height:1.6;margin:0">{v.desc[lang]}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer CTA -->
+    <section class="pad py-section" style="background:var(--color-mist)">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div>
+          <h2 class="disp type-2">{lang === "id" ? "Mari Terhubung Lebih Dekat" : "Let's Connect Further"}</h2>
+          <p style="color:var(--color-mute);font-size:16px;margin-top:4px">
+            {lang === "id" ? "Buka pintu untuk kolaborasi kebijakan, riset teknologi, atau sesi panggung." : "Open for policy dialogue, technology research, or speaking engagements."}
+          </p>
+        </div>
+        <div class="flex gap-4">
+          <a class="pill pill--dark" href={`/${lang}/kontak/`}>
+            <span class="dot"><Icon name="arrow-right" /></span>
+            {lang === "id" ? "Halaman Kontak →" : "Contact Page →"}
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer lang={lang} />
+</Base>
+
+<style>
+  .stat-card {
+    padding: 24px;
+    gap: 8px;
+  }
+  .stat-kicker {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-violet);
+  }
+  .chapter-card {
+    background: #ffffff;
+    border: 1px solid rgba(8, 17, 31, 0.1);
+    border-radius: 20px;
+    padding: clamp(24px, 4vw, 38px);
+    display: flex;
+    gap: 24px;
+    box-shadow: 0 8px 24px -10px rgba(11, 21, 38, 0.06);
+    transition: transform 0.3s ease;
+  }
+  .chapter-card:hover {
+    transform: translateY(-3px);
+  }
+  .chapter-num {
+    font-size: 38px;
+    font-weight: 900;
+    color: var(--color-violet);
+    opacity: 0.35;
+    font-family: Archivo, sans-serif;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+  .chapter-tag {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-violet);
+  }
+  .val-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 18px;
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .eyebrow {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-lilac);
+  }
+  @media (max-width: 640px) {
+    .chapter-card {
+      flex-direction: column;
+      gap: 12px;
+    }
+  }
+</style>

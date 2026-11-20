@@ -1,0 +1,310 @@
+---
+/**
+ * Halaman Panggung & Forum Nasional.
+ * Dokumentasi speaking engagement, keynote forum regulasi, dan arsip paparan.
+ */
+import Base from "../../layouts/Base.astro";
+import PageHeader from "../../components/PageHeader.astro";
+import Footer from "../../components/Footer.astro";
+import Icon from "../../components/Icon.astro";
+import type { Lang } from "../../i18n/ui";
+import { talks } from "../../data/content";
+import { waLink } from "../../data/site";
+
+export function getStaticPaths() {
+  return [{ params: { lang: "id" } }, { params: { lang: "en" } }];
+}
+
+const { lang } = Astro.params as { lang: Lang };
+const currentPath = `/${lang}/panggung/`;
+
+const title =
+  lang === "id"
+    ? "Panggung & Forum Regulasi | Arizki Putra Rahman"
+    : "Speaking & Policy Forums | Arizki Putra Rahman";
+const description =
+  lang === "id"
+    ? "Rekam jejak panggung, keynote, dan forum nasional Arizki Putra Rahman bersama pimpinan kementerian dan pakar hukum, mengawal tata kelola AI dan UU PDP."
+    : "Speaking record and keynote policy forums of Arizki Putra Rahman alongside deputy ministers and legal scholars on AI governance and data regulation.";
+
+const topics = [
+  {
+    ico: "🤖",
+    title: { id: "Tata Kelola & Peta Jalan AI", en: "AI Governance & Roadmap" },
+    desc: {
+      id: "Membahas perumusan Perpres Tata Kelola AI, regulatory sandbox, audit algoritma generatif, dan mitigasi bias data di sektor publik maupun komersial.",
+      en: "Discussing AI Governance Presidential Regulations, regulatory sandboxes, algorithmic audits, and data bias mitigation for public and enterprise sectors.",
+    },
+    format: { id: "Keynote / Panel Discussion", en: "Keynote / Panel Discussion" },
+  },
+  {
+    ico: "🔐",
+    title: { id: "Kepatuhan Praktis UU PDP", en: "Practical PDP Law Compliance" },
+    desc: {
+      id: "Langkah operasional implementasi UU No. 27/2022 dan PP 33/2026. Dari penunjukan DPO hingga mitigasi sanksi denda dan breach notification 3x24 jam.",
+      en: "Operational steps for Law 27/2022 and GR 33/2026. From DPO appointment to mitigating regulatory fines and 72-hour breach notification protocols.",
+    },
+    format: { id: "Executive Briefing / Workshop", en: "Executive Briefing / Workshop" },
+  },
+  {
+    ico: "⚡",
+    title: { id: "Penerapan AI di Dunia Nyata", en: "Real-world AI Implementation" },
+    desc: {
+      id: "Menjembatani konsep AI dengan eksekusi produk teknis. Pengalaman langsung memimpin startup health-tech dan automasi enterprise berbasis agen cerdas.",
+      en: "Bridging AI theory into production code. Real-world insights leading health-tech startups and intelligent autonomous agent automation.",
+    },
+    format: { id: "Tech Talk / Fireside Chat", en: "Tech Talk / Fireside Chat" },
+  },
+  {
+    ico: "🌱",
+    title: { id: "Kedaulatan Data & Talenta Daerah", en: "Data Sovereignty & Regional Talent" },
+    desc: {
+      id: "Perspektif putra daerah dalam membangun ekosistem digital nasional. Mendorong talenta dari luar kota metropolitan agar mampu bersaing di tingkat global.",
+      en: "A regional perspective on building the national digital economy. Empowering talents from outside metropolitan hubs to excel globally.",
+    },
+    format: { id: "Seminar / Public Policy Forum", en: "Seminar / Public Policy Forum" },
+  },
+];
+---
+
+<Base lang={lang} title={title} description={description} path={currentPath}>
+  <main id="isi">
+    <PageHeader
+      lang={lang}
+      currentPath={currentPath}
+      kicker={lang === "id" ? "FORUM & KEYNOTE SPEAKING" : "FORUMS & KEYNOTE SPEAKING"}
+      title={lang === "id" ? "Mengawal Regulasi AI dari Atas Panggung." : "Advancing AI Policy from the Main Stage."}
+      subtitle={lang === "id"
+        ? "Paparan substantif di hadapan regulator, akademisi hukum, dan pimpinan industri. Mengubah draf pasal teknis menjadi kebijakan yang bisa dijalankan di lapangan."
+        : "Substantive discourse before regulators, legal scholars, and industry executives. Translating complex technical provisions into actionable national policy."}
+      ctaText={lang === "id" ? "Undang Bicara" : "Invite to Speak"}
+      ctaHref={waLink("speak", lang)}
+    />
+
+    <!-- Featured Forum: National Law Forum 2026 -->
+    <section class="pad py-section" style="background:var(--color-mist)">
+      <div class="featured-forum">
+        <div class="featured-forum__badge">
+          <span>{lang === "id" ? "FORUM UNGGULAN" : "FEATURED KEYNOTE"}</span>
+        </div>
+        <div class="grid gap-8 lg:grid-cols-12 items-center">
+          <div class="lg:col-span-7 flex flex-col gap-4">
+            <span class="forum-meta">DPN PERMAHI · Jakarta · 2026</span>
+            <h2 class="disp type-2">National Law Forum 2026: Kedaulatan Digital &amp; Tata Kelola AI di Indonesia</h2>
+            <p style="color:var(--color-mute);font-size:16px;line-height:1.6">
+              {lang === "id"
+                ? "Tampil sebagai narasumber utama bersama Wakil Menteri Komunikasi dan Digital (Komdigi) Nezar Patria dan pakar hukum telematika Dr. Edmon Makarim. Membahas mitigasi risiko implementasi Perpres Tata Kelola AI, akuntabilitas algoritma generatif, dan kepatuhan UU Pelindungan Data Pribadi."
+                : "Featured as a keynote speaker alongside Deputy Minister of Communications and Digital (Komdigi) Nezar Patria and cyber law authority Dr. Edmon Makarim. Discussing risk mitigation in AI Presidential Regulations, generative algorithmic accountability, and national data privacy enforcement."}
+            </p>
+            <div class="forum-speakers">
+              <span class="speaker-pill">Nezar Patria (Wamen Komdigi)</span>
+              <span class="speaker-pill">Dr. Edmon Makarim (Pakar Hukum Siber)</span>
+              <span class="speaker-pill speaker-pill--highlight">Arizki Putra Rahman (CEO Nbie Solutions)</span>
+            </div>
+            <div class="flex gap-4 items-center" style="margin-top:8px">
+              <a
+                class="pill pill--dark"
+                href="https://stitml.ac.id/artikel/putra-daerah-sumsel-asal-muratara-arizki-putra-rahman-bicara-tata-kelola-ai-di-national-law-forum-2026"
+                target="_blank"
+                rel="noopener"
+              >
+                <span class="dot"><Icon name="arrow-right" /></span>
+                {lang === "id" ? "Baca Liputan Media" : "Read Media Coverage"}
+              </a>
+            </div>
+          </div>
+          <div class="lg:col-span-5 flex flex-col gap-4">
+            <div class="forum-stat-card">
+              <span class="stat-num">3</span>
+              <span class="stat-lbl">{lang === "id" ? "Pilar Pembahasan" : "Core Discussion Pillars"}</span>
+              <p style="font-size:14px;color:var(--color-mute)">Perpres AI, Sandbox Regulasi, dan Kedaulatan Data tanpa proteksionisme berlebihan.</p>
+            </div>
+            <div class="forum-stat-card">
+              <span class="stat-num">100+</span>
+              <span class="stat-lbl">{lang === "id" ? "Delegasi & Tokoh Hukum" : "Delegates & Legal Figures"}</span>
+              <p style="font-size:14px;color:var(--color-mute)">Dihadiri praktisi hukum, pimpinan asosiasi advokat, dan akademisi nasional.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Full Timeline of Speaking & Recognitions -->
+    <section class="pad py-section" style="background:var(--color-night);color:#fff">
+      <div class="grid gap-8 lg:grid-cols-12">
+        <div class="lg:col-span-4 flex flex-col gap-4">
+          <h2 class="disp type-2">{lang === "id" ? "Linimasa Panggung & Rekam Jejak" : "Speaking Timeline & Track Record"}</h2>
+          <p style="color:var(--color-fog);font-size:16px;line-height:1.6">
+            {lang === "id"
+              ? "Arsip forum, uji publik, dan pengakuan talenta yang telah dilalui dari tingkat universitas hingga panggung kebijakan nasional."
+              : "Archive of public forums, consultations, and talent honours from university leadership to national policy arenas."}
+          </p>
+          <a class="pill" href={waLink("speak", lang)}>
+            <span class="dot"><Icon name="arrow-right" /></span>
+            {lang === "id" ? "Jadwalkan Sesi" : "Schedule a Session"}
+          </a>
+        </div>
+
+        <div class="lg:col-span-8 flex flex-col">
+          {talks.map((talk) => (
+            <div class="talk__row">
+              <span class="talk__yr">{talk.yr[lang]}</span>
+              {talk.href ? (
+                <a class="talk__txt" href={talk.href} target="_blank" rel="noopener">{talk.t[lang]}</a>
+              ) : (
+                <span class="talk__txt">{talk.t[lang]}</span>
+              )}
+              <span class="talk__meta">{talk.m[lang]}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Topik Paparan -->
+    <section class="pad py-section" style="background:var(--color-haze)">
+      <div class="flex flex-col gap-8">
+        <div class="flex flex-col gap-3 max-w-prose">
+          <p class="kicker">{lang === "id" ? "KURASI MATERI" : "TOPIC CURATION"}</p>
+          <h2 class="disp type-2">{lang === "id" ? "Topik Paparan Utama" : "Key Speaking Topics"}</h2>
+          <p style="color:var(--color-mute);font-size:16px">
+            {lang === "id"
+              ? "Setiap sesi dirancang berbasis data, studi kasus empiris, dan relevansi langsung dengan regulasi terkini."
+              : "Every session is engineered with empirical data, case studies, and actionable regulatory relevance."}
+          </p>
+        </div>
+
+        <div class="grid gap-6 sm:grid-cols-2">
+          {topics.map((t) => (
+            <div class="card topic-card">
+              <div class="flex items-center justify-between">
+                <span class="card__ico">{t.ico}</span>
+                <span class="topic-format">{t.format[lang]}</span>
+              </div>
+              <h3 class="disp" style="font-size:20px">{t.title[lang]}</h3>
+              <p style="font-size:15px;color:var(--color-mute);line-height:1.55">{t.desc[lang]}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Rider & Media Kit CTA -->
+    <section class="pad py-section" style="background:var(--color-night);color:#fff">
+      <div class="media-kit-box">
+        <div class="flex flex-col gap-4 max-w-prose">
+          <h2 class="disp type-2">{lang === "id" ? "Rider Teknis & Media Kit" : "Technical Rider & Media Kit"}</h2>
+          <p style="color:var(--color-fog);font-size:16px;line-height:1.6">
+            {lang === "id"
+              ? "Untuk panitia konferensi, tim humas instansi, atau media: dapatkan bio resmi 100 kata, foto resolusi tinggi (portrait/landscape), dan daftar topik materi siap tayang."
+              : "For conference committees, PR teams, or media: request the official 100-word bio, high-resolution photography, and presentation briefs."}
+          </p>
+        </div>
+        <div class="flex flex-wrap gap-4 items-center">
+          <a class="pill" href={waLink("speak", lang)}>
+            <span class="dot"><Icon name="arrow-right" /></span>
+            {lang === "id" ? "Minta Media Kit via WhatsApp" : "Request Media Kit via WhatsApp"}
+          </a>
+          <a class="pill pill--ghost" href={`/${lang}/kontak/`}>
+            {lang === "id" ? "Hubungi Langsung →" : "Direct Contact →"}
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer lang={lang} />
+</Base>
+
+<style>
+  .featured-forum {
+    position: relative;
+    background: #ffffff;
+    border: 1px solid rgba(8, 17, 31, 0.1);
+    border-radius: 24px;
+    padding: clamp(24px, 4vw, 44px);
+    box-shadow: 0 12px 36px -12px rgba(11, 21, 38, 0.08);
+  }
+  .featured-forum__badge {
+    display: inline-block;
+    background: var(--color-sky);
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    padding: 4px 12px;
+    border-radius: 999px;
+    margin-bottom: 20px;
+  }
+  .forum-meta {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: var(--color-violet);
+    text-transform: uppercase;
+  }
+  .forum-speakers {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 4px;
+  }
+  .speaker-pill {
+    font-size: 13px;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 8px;
+    background: var(--color-haze);
+    border: 1px solid rgba(8, 17, 31, 0.08);
+    color: var(--color-ink);
+  }
+  .speaker-pill--highlight {
+    background: #0b1526;
+    color: #ffffff;
+    border-color: #0b1526;
+  }
+  .forum-stat-card {
+    background: var(--color-haze);
+    border: 1px solid rgba(8, 17, 31, 0.08);
+    border-radius: 16px;
+    padding: 20px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .stat-num {
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--color-ink);
+    line-height: 1;
+    font-family: Archivo, sans-serif;
+  }
+  .stat-lbl {
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--color-violet);
+  }
+  .topic-card {
+    padding: 28px;
+  }
+  .topic-format {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--color-violet);
+    background: rgba(150, 96, 13, 0.08);
+    padding: 4px 10px;
+    border-radius: 6px;
+  }
+  .media-kit-box {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    padding: clamp(28px, 4vw, 48px);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 24px;
+  }
+</style>

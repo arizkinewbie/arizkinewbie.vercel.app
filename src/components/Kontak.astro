@@ -1,5 +1,6 @@
 ---
 /** Section Kontak — tiga CTA WhatsApp terisi otomatis + kontak langsung. */
+import Icon from "./Icon.astro";
 import { useTranslations, type Lang } from "../i18n/ui";
 import { site, waIntent, waLink, type WaIntent } from "../data/site";
 
@@ -45,6 +46,12 @@ const intents: WaIntent[] = ["speak", "brief", "work"];
         </div>
       </div>
       <p class="note">{t("kontak.mediakit")}</p>
+      <div style="margin-top:8px">
+        <a class="pill" href={`/${lang}/kontak/`}>
+          <span class="dot"><Icon name="arrow-right" /></span>
+          {lang === "id" ? "Pembuat Pesan WhatsApp Interaktif →" : "Interactive Message Builder →"}
+        </a>
+      </div>
     </div>
   </div>
 </section>

@@ -1,0 +1,329 @@
+---
+/**
+ * Halaman Karya & Portofolio Teknologi.
+ * Deep dive Nbie Solutions, SymptoMed, dan standar rekayasa sistem.
+ */
+import Base from "../../layouts/Base.astro";
+import PageHeader from "../../components/PageHeader.astro";
+import Footer from "../../components/Footer.astro";
+import Icon from "../../components/Icon.astro";
+import type { Lang } from "../../i18n/ui";
+import { waLink } from "../../data/site";
+
+export function getStaticPaths() {
+  return [{ params: { lang: "id" } }, { params: { lang: "en" } }];
+}
+
+const { lang } = Astro.params as { lang: Lang };
+const currentPath = `/${lang}/karya/`;
+
+const title =
+  lang === "id"
+    ? "Karya & Portofolio Teknologi | Arizki Putra Rahman"
+    : "Work & Ventures | Arizki Putra Rahman";
+const description =
+  lang === "id"
+    ? "Bukti nyata kepemimpinan rekayasa teknologi dan implementasi AI: Nbie Solutions (Enterprise & AI) dan SymptoMed (Health-Tech AI di Google Play)."
+    : "Real-world technology leadership and production AI implementation: Nbie Solutions (Enterprise & AI) and SymptoMed (Health-Tech AI on Google Play).";
+
+const principles = [
+  {
+    ico: "🛡️",
+    title: { id: "Privasi Sejak Rancang Bangun (Privacy by Design)", en: "Privacy by Design" },
+    desc: {
+      id: "Setiap sistem dirancang mematuhi prinsip minimisasi data, enkripsi end-to-end, dan pemisahan identitas sesuai mandat UU PDP No. 27/2022.",
+      en: "Every system enforces data minimisation, end-to-end cryptographic safeguards, and strict identity segregation in adherence to statutory privacy law.",
+    },
+  },
+  {
+    ico: "⚙️",
+    title: { id: "Ketahanan & Kemandirian Infrastruktur", en: "Infrastructure Resilience & Sovereignty" },
+    desc: {
+      id: "Menghindari vendor lock-in yang berlebihan. Menggabungkan efisiensi server mandiri (self-hosted) dengan reliabilitas cloud enterprise.",
+      en: "Eliminating brittle vendor lock-in. Blending high-efficiency self-hosted architecture with enterprise-grade cloud reliability.",
+    },
+  },
+  {
+    ico: "🧠",
+    title: { id: "AI Terarah & Akuntabel", en: "Auditable & Pragmatic AI" },
+    desc: {
+      id: "Bukan sekadar membungkus API pihak ketiga. Kami merancang alur agen otonom yang dapat diaudit, terbebas dari halusinasi data, dan terukur secara matematis.",
+      en: "Beyond thin API wrappers. We engineer deterministic, auditable multi-agent workflows with verified grounding and verifiable error boundaries.",
+    },
+  },
+];
+---
+
+<Base lang={lang} title={title} description={description} path={currentPath}>
+  <main id="isi">
+    <PageHeader
+      lang={lang}
+      currentPath={currentPath}
+      kicker={lang === "id" ? "VENTURES & IMPLEMENTASI TEKNOLOGI" : "VENTURES & APPLIED ENGINEERING"}
+      title={lang === "id" ? "Membangun Produk Nyata, Menjalankan yang Diatur." : "Building Real Systems, Living the Regulations."}
+      subtitle={lang === "id"
+        ? "Kredibilitas saya di bidang tata kelola bukan berasal dari teori menara gading. Sebagai Founder dan CTO, saya memimpin tim engineering, merancang arsitektur data, dan bertanggung jawab langsung atas sistem yang melayani publik."
+        : "My credibility in governance does not stem from an ivory tower. As Founder and CTO, I direct engineering squads, architect data pipelines, and take direct liability for systems serving the public."}
+      ctaText={lang === "id" ? "Diskusikan Proyek" : "Discuss a Project"}
+      ctaHref={waLink("work", lang)}
+    />
+
+    <!-- Showcase 1: Nbie Solutions -->
+    <section class="pad py-section" style="background:var(--color-mist)">
+      <div class="venture-card">
+        <div class="grid gap-8 lg:grid-cols-12 items-center">
+          <div class="lg:col-span-7 flex flex-col gap-5">
+            <div class="flex items-center gap-3">
+              <span class="venture-role">Founder &amp; CEO</span>
+              <span class="venture-tag">Enterprise &amp; AI Systems</span>
+            </div>
+            <h2 class="disp type-1">Nbie Solutions</h2>
+            <p style="color:var(--color-mute);font-size:17px;line-height:1.6">
+              {lang === "id"
+                ? "Perusahaan teknologi yang menyediakan solusi rekayasa perangkat lunak enterprise, implementasi agen kecerdasan buatan terapan, perumusan policy brief regulasi, serta amplifikasi talenta digital. Melayani institusi pendidikan tinggi, asosiasi hukum tingkat nasional, dan sektor komersial."
+                : "A technology venture providing enterprise software engineering, production AI agent orchestration, institutional regulatory briefs, and digital talent amplification. Serving universities, national legal associations, and commercial enterprises."}
+            </p>
+            <div class="venture-features">
+              <div class="feat-item">
+                <span class="feat-bullet">✓</span>
+                <span>{lang === "id" ? "Automasi AI Agent & Workflow Otomatis" : "Autonomous AI Agents & Intelligent Pipelines"}</span>
+              </div>
+              <div class="feat-item">
+                <span class="feat-bullet">✓</span>
+                <span>{lang === "id" ? "Sistem Informasi Terintegrasi & Audit Keamanan" : "Integrated Information Systems & Security Audits"}</span>
+              </div>
+              <div class="feat-item">
+                <span class="feat-bullet">✓</span>
+                <span>{lang === "id" ? "Penyusunan Policy Brief & Kepatuhan Regulasi" : "Policy Formulation & Regulatory Compliance Briefs"}</span>
+              </div>
+            </div>
+            <div class="flex items-center gap-4" style="margin-top:6px">
+              <a class="pill pill--dark" href="https://nbies.id" target="_blank" rel="noopener">
+                <span class="dot"><Icon name="arrow-right" /></span>
+                {lang === "id" ? "Kunjungi nbies.id" : "Visit nbies.id"}
+              </a>
+            </div>
+          </div>
+
+          <div class="lg:col-span-5 venture-metrics-col">
+            <div class="metric-box">
+              <span class="metric-val">10+</span>
+              <span class="metric-name">{lang === "id" ? "Sistem Informasi & Portofolio Aktif" : "Production Platforms & Portfolios"}</span>
+              <p style="font-size:13px;color:var(--color-mute);margin:0">Mencakup platform asosiasi hukum nasional, LMS, dan backend enterprise.</p>
+            </div>
+            <div class="metric-box">
+              <span class="metric-val">99.9%</span>
+              <span class="metric-name">{lang === "id" ? "Reliabilitas & Keamanan Sistem" : "System Reliability & Uptime"}</span>
+              <p style="font-size:13px;color:var(--color-mute);margin:0">Arsitektur mandiri berorientasi performa tinggi dan perlindungan data terisolasi.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Showcase 2: SymptoMed -->
+    <section class="pad py-section" style="background:var(--color-night);color:#fff">
+      <div class="venture-card venture-card--dark">
+        <div class="grid gap-8 lg:grid-cols-12 items-center">
+          <div class="lg:col-span-7 flex flex-col gap-5">
+            <div class="flex items-center gap-3">
+              <span class="venture-role venture-role--light">Co-Founder &amp; CTO</span>
+              <span class="venture-tag venture-tag--light">AI Health-Tech</span>
+            </div>
+            <h2 class="disp type-1" style="color:#ffffff">SymptoMed</h2>
+            <p style="color:var(--color-fog);font-size:17px;line-height:1.6">
+              {lang === "id"
+                ? "Startup health-tech yang memanfaatkan kecerdasan buatan untuk analisis dini gejala klinis dan integrasi rujukan fasilitas kesehatan di Indonesia. Dirancang untuk menjawab keterbatasan akses triase pra-klinis secara cepat, akurat, dan menjamin kerahasiaan data medis pengguna."
+                : "A health-tech startup utilizing artificial intelligence for preliminary clinical symptom triaging and healthcare referral routing across Indonesia. Engineered to democratise pre-clinical healthcare access while maintaining stringent medical data confidentiality."}
+            </p>
+            <div class="venture-features venture-features--dark">
+              <div class="feat-item">
+                <span class="feat-bullet feat-bullet--light">✓</span>
+                <span>{lang === "id" ? "Aplikasi Aktif di Google Play Store" : "Live Application on Google Play Store"}</span>
+              </div>
+              <div class="feat-item">
+                <span class="feat-bullet feat-bullet--light">✓</span>
+                <span>{lang === "id" ? "Natural Language Processing Khusus Keluhan Medis Lokal" : "Specialised Medical NLP for Indonesian Colloquial Symptoms"}</span>
+              </div>
+              <div class="feat-item">
+                <span class="feat-bullet feat-bullet--light">✓</span>
+                <span>{lang === "id" ? "Arsitektur Kepatuhan Data Medis Ketat (UU PDP 2022)" : "Strict Health Data Protection Compliance Architecture"}</span>
+              </div>
+            </div>
+            <div class="flex items-center gap-4" style="margin-top:6px">
+              <a class="pill" href="https://symptomed.id" target="_blank" rel="noopener">
+                <span class="dot"><Icon name="arrow-right" /></span>
+                {lang === "id" ? "Kunjungi symptomed.id" : "Visit symptomed.id"}
+              </a>
+            </div>
+          </div>
+
+          <div class="lg:col-span-5 venture-metrics-col">
+            <div class="metric-box metric-box--dark">
+              <span class="metric-val" style="color:var(--color-lilac)">Android</span>
+              <span class="metric-name" style="color:#ffffff">{lang === "id" ? "Aksesibilitas Seluler Luas" : "Broad Mobile Accessibility"}</span>
+              <p style="font-size:13px;color:var(--color-fog);margin:0">Menjangkau pengguna ponsel pintar di seluruh penjuru Indonesia tanpa hambatan.</p>
+            </div>
+            <div class="metric-box metric-box--dark">
+              <span class="metric-val" style="color:var(--color-lilac)">Triase AI</span>
+              <span class="metric-name" style="color:#ffffff">{lang === "id" ? "Rujukan Cepat Fasilitas Medis" : "Rapid Clinical Routing"}</span>
+              <p style="font-size:13px;color:var(--color-fog);margin:0">Membantu masyarakat mengenali tingkat urgensi gejala sebelum datang ke fasilitas kesehatan.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Engineering Principles -->
+    <section class="pad py-section" style="background:var(--color-haze)">
+      <div class="flex flex-col gap-8">
+        <div class="flex flex-col gap-3 max-w-prose">
+          <p class="kicker">{lang === "id" ? "STANDAR TEKNIS" : "TECHNICAL STANDARDS"}</p>
+          <h2 class="disp type-2">{lang === "id" ? "Prinsip Rekayasa Sistem Kami" : "Our Engineering Philosophy"}</h2>
+          <p style="color:var(--color-mute);font-size:16px">
+            {lang === "id"
+              ? "Bagaimana kami memastikan setiap baris kode yang ditulis di Nbie Solutions dan SymptoMed tahan uji di dunia nyata dan patuh regulasi."
+              : "How we ensure every line of code deployed across Nbie Solutions and SymptoMed remains rock-solid in production and legally sound."}
+          </p>
+        </div>
+
+        <div class="grid gap-6 md:grid-cols-3">
+          {principles.map((p) => (
+            <div class="card principle-card">
+              <span class="card__ico">{p.ico}</span>
+              <h3 class="disp" style="font-size:19px">{p.title[lang]}</h3>
+              <p style="font-size:15px;color:var(--color-mute);line-height:1.6">{p.desc[lang]}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="pad py-section" style="background:var(--color-night);color:#fff">
+      <div class="grid gap-8 lg:grid-cols-12 items-center">
+        <div class="lg:col-span-8 flex flex-col gap-4">
+          <h2 class="disp type-2">{lang === "id" ? "Punya Kebutuhan Sistem atau Proyek AI?" : "Have an Enterprise System or AI Initiative?"}</h2>
+          <p style="color:var(--color-fog);font-size:16px;line-height:1.6;max-width:64ch">
+            {lang === "id"
+              ? "Kami siap mendiskusikan implementasi teknologi kustom, automasi alur kerja institusi, atau audit kepatuhan regulasi digital."
+              : "We welcome technical discussions on custom software implementation, institutional automation, or regulatory audit readiness."}
+          </p>
+        </div>
+        <div class="lg:col-span-4 flex justify-start lg:justify-end">
+          <a class="pill" href={waLink("work", lang)}>
+            <span class="dot"><Icon name="arrow-right" /></span>
+            {lang === "id" ? "Mulai Diskusi Proyek" : "Initiate Technical Discussion"}
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer lang={lang} />
+</Base>
+
+<style>
+  .venture-card {
+    background: #ffffff;
+    border: 1px solid rgba(8, 17, 31, 0.1);
+    border-radius: 24px;
+    padding: clamp(28px, 4vw, 48px);
+    box-shadow: 0 12px 36px -12px rgba(11, 21, 38, 0.08);
+  }
+  .venture-card--dark {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 20px 48px -16px rgba(0, 0, 0, 0.6);
+  }
+  .venture-role {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--color-violet);
+  }
+  .venture-role--light {
+    color: var(--color-lilac);
+  }
+  .venture-tag {
+    font-size: 12px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 6px;
+    background: var(--color-haze);
+    color: var(--color-ink);
+  }
+  .venture-tag--light {
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+  }
+  .venture-features {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .feat-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--color-ink);
+  }
+  .venture-features--dark .feat-item {
+    color: var(--color-fog);
+  }
+  .feat-bullet {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--color-sky);
+    color: #ffffff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .feat-bullet--light {
+    background: var(--color-lilac);
+    color: var(--color-night);
+  }
+  .venture-metrics-col {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .metric-box {
+    background: var(--color-haze);
+    border: 1px solid rgba(8, 17, 31, 0.08);
+    border-radius: 16px;
+    padding: 22px 26px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .metric-box--dark {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.12);
+  }
+  .metric-val {
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--color-ink);
+    line-height: 1;
+    font-family: Archivo, sans-serif;
+  }
+  .metric-name {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--color-ink);
+  }
+  .principle-card {
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+</style>
