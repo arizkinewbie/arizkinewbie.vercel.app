@@ -79,10 +79,19 @@ export const talks = [
     href: "https://stitml.ac.id/artikel/putra-daerah-sumsel-asal-muratara-arizki-putra-rahman-bicara-tata-kelola-ai-di-national-law-forum-2026",
   },
   {
+    yr: { id: "2025", en: "2025" },
+    t: {
+      id: "Advokasi Hak Publik & Penolakan Komersialisasi Jembatan",
+      en: "Public Advocacy Against Bridge Access Commercialisation",
+    },
+    m: { id: "GAASS · Musi Rawas Utara", en: "GAASS · Musi Rawas Utara" },
+    href: "https://rakyatempatlawang.disway.id/read/670393/gaass-musi-rawas-utara-protes-komersialisasi-akses-publik-desak-pemerintah-segera-bangun-ulang-jembatan/15",
+  },
+  {
     yr: { id: "2023", en: "2023" },
     t: { id: "IndonesiaNEXT Season 7 — Best Talent", en: "IndonesiaNEXT Season 7 — Best Talent" },
     m: { id: "Telkomsel", en: "Telkomsel" },
-    href: "",
+    href: "https://jalurinformasi.com/anak-mantan-ketua-pwi-muratara-menjadi-best-talent-indonesianext-season-7/",
   },
   {
     yr: { id: "2023", en: "2023" },
@@ -92,9 +101,33 @@ export const talks = [
   },
   {
     yr: { id: "2022", en: "2022" },
-    t: { id: "Ketua BEM KHI", en: "Chairperson, BEM KHI" },
-    m: { id: "Universitas Esa Unggul", en: "Esa Unggul University" },
-    href: "",
+    t: { id: "Ketua BEM KHI & Inisiator ARTRAKTIF", en: "Chairperson, BEM KHI & ARTRAKTIF Convenor" },
+    m: { id: "Universitas Esa Unggul (Liputan Tempo.co)", en: "Esa Unggul University (Tempo.co)" },
+    href: "https://event.tempo.co/read/1665679/fakultas-desain-dan-industri-universitas-esa-unggul-bekasi-sukses-selenggarakan-artraktif",
+  },
+  {
+    yr: { id: "2022", en: "2022" },
+    t: { id: "Program Kreativitas Mahasiswa (PKM) Riset Teknologi", en: "Student Creativity Programme (PKM) Applied Research" },
+    m: { id: "Kemendikbudristek · Esa Unggul", en: "Ministry of Education & Esa Unggul" },
+    href: "https://fin.co.id/read/87267/jelang-kompetisi-pkm-2022-universitas-esa-unggul-lakukan-persiapan-khusus",
+  },
+  {
+    yr: { id: "2021", en: "2021" },
+    t: { id: "Kontes Robot Indonesia (KRI 2021) — Robot Otonom Damkar 'Esgul Fire'", en: "Indonesian Robot Contest (KRI 2021) — Autonomous Firefighter 'Esgul Fire'" },
+    m: { id: "Puspresnas (Liputan Tribunnews)", en: "Puspresnas (Tribunnews Coverage)" },
+    href: "https://www.tribunnews.com/sains/2021/10/05/robot-damkar-otonom-berkaki-tingkat-buatan-mahasiswa-ueu-curi-perhatian-di-kontes-kri-2021",
+  },
+  {
+    yr: { id: "2021", en: "2021" },
+    t: { id: "Inisiator Seminar Kepemudaan 'Pemuda Kunci Pembangunan Desa'", en: "Youth Seminar Convenor 'Youth as the Key to Village Development'" },
+    m: { id: "IRMMR & Karang Taruna Desa Remban", en: "IRMMR & Remban Youth Union" },
+    href: "https://coganews.co.id/2021/02/14/pemuda-kunci-pembangunan-desa-irmmr-bersama-karang-taruna-desa-remban-sukses-adakan-seminar-kepemudaan/",
+  },
+  {
+    yr: { id: "2019", en: "2019" },
+    t: { id: "Inisiator Advokasi Transparansi Hak Siswa SMAN Surulangun", en: "Student Rights & Transparency Advocacy Initiator" },
+    m: { id: "Muratara (Liputan Tribun Palembang)", en: "Muratara (Tribun Palembang Coverage)" },
+    href: "https://palembang.tribunnews.com/2019/10/14/minta-ganti-kepsek-ratusan-siswa-sman-surulangun-kabupaten-muratara-demo-di-jalinsum",
   },
 ] as const;
 
@@ -175,5 +208,119 @@ export const works = [
     },
     href: "https://symptomed.id",
     light: true,
+  },
+] as const;
+
+/* ---------- Arsip Liputan Media & Berita Terverifikasi ---------- */
+export const pressReleases = [
+  {
+    publisher: "Tempo.co",
+    year: "2022",
+    tag: { id: "Kepemimpinan Kampus", en: "Student Leadership" },
+    title: {
+      id: "Fakultas Desain dan Industri Kreatif UEU Bersama BEM KHI Sukses Selenggarakan ARTRAKTIF",
+      en: "FDIK Esa Unggul and BEM KHI Successfully Convene ARTRAKTIF Event",
+    },
+    url: "https://event.tempo.co/read/1665679/fakultas-desain-dan-industri-universitas-esa-unggul-bekasi-sukses-selenggarakan-artraktif",
+    badge: "Media Nasional",
+  },
+  {
+    publisher: "Tribunnews.com",
+    year: "2021",
+    tag: { id: "Robotika & Inovasi", en: "Robotics & Innovation" },
+    title: {
+      id: "Robot Damkar Otonom Berkaki Tingkat 'Esgul Fire' Buatan Mahasiswa UEU Curi Perhatian di KRI 2021",
+      en: "Autonomous Firefighter Robot 'Esgul Fire' Catches National Spotlight at KRI 2021",
+    },
+    url: "https://www.tribunnews.com/sains/2021/10/05/robot-damkar-otonom-berkaki-tingkat-buatan-mahasiswa-ueu-curi-perhatian-di-kontes-kri-2021",
+    badge: "Media Nasional",
+  },
+  {
+    publisher: "Investor Daily (Investor.id)",
+    year: "2021",
+    tag: { id: "Teknologi Terapan", en: "Applied Tech" },
+    title: {
+      id: "Robot Buatan Mahasiswa UEU 'Esgul Fire' Berlaga di Kontes Robot Indonesia 2021",
+      en: "Esa Unggul Student Robot 'Esgul Fire' Competes in Kontes Robot Indonesia 2021",
+    },
+    url: "https://investor.id/national/265866/robot-buatan-mahasiswa-ueu-quotesgul-firequot-berlaga-di-kontes-robot-indonesia-2021",
+    badge: "Media Nasional",
+  },
+  {
+    publisher: "Rakyat Merdeka (RM.id)",
+    year: "2021",
+    tag: { id: "Robotika", en: "Robotics" },
+    title: {
+      id: "Robot Buatan Mahasiswa UEU 'Esgul Fire' Ramaikan Kontes Robot Indonesia 2021",
+      en: "Student-Built Robot 'Esgul Fire' Enlivens Kontes Robot Indonesia 2021",
+    },
+    url: "https://rm.id/baca-berita/etalase-bisnis/93931/robot-buatan-mahasiswa-ueu-quotesgul-firequot-ramaikan-kontes-robot-indonesia-2021",
+    badge: "Media Nasional",
+  },
+  {
+    publisher: "Disway Network (Palpres)",
+    year: "2022",
+    tag: { id: "Organisasi Kampus", en: "Campus Governance" },
+    title: {
+      id: "Pemuda Asli Desa Remban Muratara Terpilih Jadi Ketua BEM KHI Universitas Esa Unggul",
+      en: "Remban Native Youth Elected Chairperson of BEM KHI Universitas Esa Unggul",
+    },
+    url: "https://palpres.disway.id/read/422227/pemuda-asli-desa-remban-muratara-terpilih-ketua-bem-khi-ueu",
+    badge: "Disway Network",
+  },
+  {
+    publisher: "Disway Network (Rakyat Empat Lawang)",
+    year: "2025",
+    tag: { id: "Advokasi Publik", en: "Public Advocacy" },
+    title: {
+      id: "GAASS Musi Rawas Utara Protes Komersialisasi Akses Publik, Desak Pemerintah Segera Bangun Jembatan",
+      en: "GAASS Protests Commercialisation of Public River Crossing, Demands Immediate Bridge Reconstruction",
+    },
+    url: "https://rakyatempatlawang.disway.id/read/670393/gaass-musi-rawas-utara-protes-komersialisasi-akses-publik-desak-pemerintah-segera-bangun-ulang-jembatan/15",
+    badge: "Disway Network",
+  },
+  {
+    publisher: "Jalur Informasi",
+    year: "2023",
+    tag: { id: "Talenta Digital", en: "Digital Talent" },
+    title: {
+      id: "Anak Mantan Ketua PWI Muratara Menjadi Best Talent IndonesiaNEXT Season 7 Telkomsel",
+      en: "Former Regional Press Head's Son Crowned Telkomsel IndonesiaNEXT Season 7 Best Talent",
+    },
+    url: "https://jalurinformasi.com/anak-mantan-ketua-pwi-muratara-menjadi-best-talent-indonesianext-season-7/",
+    badge: "Prestasi Telkomsel",
+  },
+  {
+    publisher: "Harian Negeri",
+    year: "2025",
+    tag: { id: "Advokasi Kebijakan", en: "Public Policy" },
+    title: {
+      id: "Masyarakat Lesung Batu Menjerit Satu Tahun Tanpa Jembatan, Akses Publik Malah Diberi Harga",
+      en: "Lesung Batu Community Plight: One Year Without Bridge, Public Access Monetised",
+    },
+    url: "https://hariannegeri.com/masyarakat-lesung-batu-menjerit-satu-tahun-tanpa-jembatan-akses-publik-malah-diberi-harga",
+    badge: "Advokasi Sosial",
+  },
+  {
+    publisher: "CogaNews",
+    year: "2021",
+    tag: { id: "Gerakan Pemuda", en: "Youth Leadership" },
+    title: {
+      id: "Pemuda Kunci Pembangunan Desa: IRMMR & Karang Taruna Desa Remban Sukses Gelar Seminar Kepemudaan",
+      en: "Youth as Engine of Rural Development: IRMMR & Youth Union Convene Youth Summit",
+    },
+    url: "https://coganews.co.id/2021/02/14/pemuda-kunci-pembangunan-desa-irmmr-bersama-karang-taruna-desa-remban-sukses-adakan-seminar-kepemudaan/",
+    badge: "Daerah",
+  },
+  {
+    publisher: "Tribunnews Palembang",
+    year: "2019",
+    tag: { id: "Integritas Sekolah", en: "Education Integrity" },
+    title: {
+      id: "Ratusan Siswa SMAN Surulangun Muratara Bergerak Tuntut Transparansi dan Kepemimpinan Bersih",
+      en: "Hundreds of Surulangun High School Students Mobilise Demanding Transparency & Accountable Leadership",
+    },
+    url: "https://palembang.tribunnews.com/2019/10/14/minta-ganti-kepsek-ratusan-siswa-sman-surulangun-kabupaten-muratara-demo-di-jalinsum",
+    badge: "Tribun Network",
   },
 ] as const;
