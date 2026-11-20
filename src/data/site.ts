@@ -9,6 +9,8 @@ export const site = {
   email: "arizki@nbies.id",
   phone: "+62 822-8948-6808",
   phoneRaw: "6282289486808",
+  address: "Jl. F No.16 7, RT.7/RW.8, Kb. Baru, Kec. Tebet, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12830",
+  city: "Jakarta Selatan, Indonesia",
   linkedin: "https://linkedin.com/in/arizkinewbie",
   instagram: "https://instagram.com/arizkinewbie",
   github: "https://github.com/arizkinewbie",
