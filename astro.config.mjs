@@ -19,6 +19,10 @@ export default defineConfig({
   ],
   vite: {
     plugins: [tailwindcss()],
+    server: {
+      // Izinkan akses dev preview via hostname publik (agent.nbies.id:4321), bukan cuma IP/localhost.
+      allowedHosts: ["agent.nbies.id"],
+    },
   },
   i18n: {
     defaultLocale: "id",
