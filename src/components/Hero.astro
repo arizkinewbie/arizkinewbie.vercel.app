@@ -15,8 +15,20 @@ const t = useTranslations(lang);
 
 const chips =
   lang === "id"
-    ? ["Tata Kelola AI", "Regulasi Digital & Data", "Ekonomi Digital", "Daerah & Talenta"]
-    : ["AI Governance", "Digital & Data Regulation", "Digital Economy", "Regions & Talent"];
+    ? [
+        "Full-Stack & AI Engineer",
+        "Founder Nbie · CTO SymptoMed",
+        "Best Talent Telkomsel",
+        "Aktivis & Pengawal Regulasi",
+        "Putra Remban Muratara",
+      ]
+    : [
+        "Full-Stack & AI Engineer",
+        "Founder Nbie · CTO SymptoMed",
+        "Telkomsel Best Talent",
+        "Activist & Policy Advocate",
+        "Muratara Native",
+      ];
 ---
 
 <header class="hero">
@@ -49,7 +61,7 @@ const chips =
   </div>
 </header>
 
-<!-- Kartu bukti kredibilitas (menggantikan kartu metrik follower) -->
+<!-- Kartu bukti kredibilitas -->
 <section class="pad" style="background:var(--color-mist)" aria-label={t("proof")}>
   <div class="proof" style="transform:translateY(-32px)">
     {proof.map((p) => (
@@ -59,4 +71,63 @@ const chips =
       </div>
     ))}
   </div>
+
+  <!-- Media Coverage & Trust Strip -->
+  <div class="hero__trust">
+    <p class="hero__trust-label">
+      {lang === "id" ? "Liputan Media, Rekognisi & Kolaborasi:" : "Featured In, Recognized By & Collaborated With:"}
+    </p>
+    <div class="hero__trust-list">
+      <span class="trust-badge">Tempo.co</span>
+      <span class="trust-badge">Tribunnews</span>
+      <span class="trust-badge">Investor Daily</span>
+      <span class="trust-badge">Rakyat Merdeka</span>
+      <span class="trust-badge">Telkomsel IndonesiaNEXT</span>
+      <span class="trust-badge">Google Bangkit</span>
+      <span class="trust-badge">DPN PERMAHI</span>
+      <span class="trust-badge">Disway Network</span>
+    </div>
+  </div>
 </section>
+
+<style>
+  .hero__trust {
+    margin-top: -12px;
+    padding-bottom: 32px;
+    text-align: center;
+  }
+  .hero__trust-label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--color-mute);
+    margin-bottom: 14px;
+    opacity: 0.85;
+  }
+  .hero__trust-list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 10px 16px;
+  }
+  .trust-badge {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    padding: 6px 14px;
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(22, 22, 26, 0.08);
+    border-radius: 9999px;
+    color: var(--color-ink);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+    transition: all 0.2s ease;
+  }
+  .trust-badge:hover {
+    background: #fff;
+    border-color: var(--color-violet);
+    color: var(--color-violet);
+    transform: translateY(-1px);
+  }
+</style>

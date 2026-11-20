@@ -8,25 +8,31 @@ export type Locale = "id" | "en";
 /* ---------- Kartu bukti kredibilitas ---------- */
 export const proof = [
   {
-    k: { id: "2026", en: "2026" },
+    k: { id: "Teknologi & AI", en: "Tech & AI" },
     v: {
-      id: "Narasumber National Law Forum, bersama Wamen Komdigi",
-      en: "Speaker at the National Law Forum, with the Deputy Minister of Komdigi",
+      id: "Robot Otonom KRI 2021 & Co-Founder SymptoMed AI",
+      en: "Autonomous Robot KRI 2021 & Co-Founder of SymptoMed AI",
     },
   },
   {
-    k: { id: "2", en: "2" },
-    v: { id: "Perusahaan tech yang dipimpin & dibangun", en: "Technology companies led and built" },
-  },
-  {
-    k: { id: "Telkomsel", en: "Telkomsel" },
-    v: { id: "Best Talent IndonesiaNEXT Season 7", en: "Best Talent at IndonesiaNEXT Season 7" },
-  },
-  {
-    k: { id: "Muratara", en: "Muratara" },
+    k: { id: "Prestasi Nasional", en: "National Awards" },
     v: {
-      id: "Putra daerah Sumsel di panggung kebijakan nasional",
-      en: "A South Sumatra native on the national policy stage",
+      id: "Best Talent IndonesiaNEXT Season 7 (Telkomsel) & Bangkit Distinction Graduate",
+      en: "Best Talent Telkomsel IndonesiaNEXT Season 7 & Bangkit Distinction Graduate",
+    },
+  },
+  {
+    k: { id: "Kepemimpinan", en: "Leadership" },
+    v: {
+      id: "Ketua BEM KHI Esa Unggul, Inisiator ARTRAKTIF & Tokoh Pemuda Muratara",
+      en: "Student Body President (BEM KHI), ARTRAKTIF Initiator & Muratara Youth Leader",
+    },
+  },
+  {
+    k: { id: "Advokasi & Regulasi", en: "Policy & Advocacy" },
+    v: {
+      id: "Narasumber National Law Forum 2026 bersama Wamen Komdigi & Pembangunan Daerah",
+      en: "National Law Forum 2026 Speaker with Dep. Minister Komdigi & Regional Advocate",
     },
   },
 ] as const;
@@ -34,35 +40,35 @@ export const proof = [
 /* ---------- Empat pilar topik ---------- */
 export const pillars = [
   {
-    ico: "🤖",
-    h: { id: "Tata Kelola AI", en: "AI Governance" },
+    ico: "💻",
+    h: { id: "Rekayasa Software & AI", en: "Software & AI Engineering" },
     p: {
-      id: "Perpres Etika & Peta Jalan AI, sandbox, pengawasan algoritma.",
-      en: "AI Ethics & Roadmap Presidential Regulations, sandboxes, algorithmic oversight.",
+      id: "Arsitektur cloud, full-stack scalable, robotika otonom (KRI 2021), & health-tech SymptoMed.",
+      en: "Cloud architecture, scalable full-stack, autonomous robotics (KRI 2021), & health-tech SymptoMed.",
+    },
+  },
+  {
+    ico: "⚖️",
+    h: { id: "Tata Kelola & Regulasi AI", en: "AI Governance & Policy" },
+    p: {
+      id: "Advokasi etika AI, regulatory sandbox, kedaulatan digital, narasumber National Law Forum 2026.",
+      en: "AI ethics advocacy, regulatory sandbox, digital sovereignty, National Law Forum 2026 speaker.",
     },
   },
   {
     ico: "🔐",
-    h: { id: "Data & Privasi", en: "Data & Privacy" },
+    h: { id: "Privasi Data & Keamanan", en: "Data Privacy & Security" },
     p: {
-      id: "UU PDP 27/2022, PP 33/2026, lembaga PDP, kedaulatan data.",
-      en: "PDP Law 27/2022, GR 33/2026, the PDP authority, data sovereignty.",
+      id: "Kepatuhan UU PDP 27/2022, autentikasi dokumen tamper-proof QR-JWT, dan hardening sistem.",
+      en: "PDP Law 27/2022 compliance, tamper-proof QR-JWT doc verification, and system hardening.",
     },
   },
   {
-    ico: "📊",
-    h: { id: "Ekonomi Digital", en: "Digital Economy" },
+    ico: "📢",
+    h: { id: "Advokasi Publik & Daerah", en: "Grassroots & Regional Impact" },
     p: {
-      id: "Insentif, pajak digital, pendanaan, talenta teknologi.",
-      en: "Incentives, digital tax, funding, technology talent.",
-    },
-  },
-  {
-    ico: "🏛️",
-    h: { id: "Politik Kebijakan", en: "Policy Politics" },
-    p: {
-      id: "DPR Komisi I, RUU teknologi, konsultasi publik.",
-      en: "House Commission I, technology bills, public consultation.",
+      id: "Aksi jembatan publik Muratara (GAASS), pemberdayaan pemuda desa (IRMMR), dan talenta daerah.",
+      en: "Muratara public bridge action (GAASS), village youth empowerment (IRMMR), and regional talent.",
     },
   },
 ] as const;
