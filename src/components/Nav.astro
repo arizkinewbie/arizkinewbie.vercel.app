@@ -32,19 +32,8 @@ const links = [
 <div class:list={["bar", { "bar--onlight": onlight }]}>
   <a class="bar__brand" href={`/${lang}/`}>
     <span class="brand-long">{t("site.title")}</span>
-    <span class="brand-short">Arizki</span>
+    <span class="brand-short">Arizki P.R</span>
   </a>
-
-  <button
-    class="menu-toggle"
-    type="button"
-    aria-label={lang === "id" ? "Buka menu" : "Open menu"}
-    aria-expanded="false"
-    aria-controls="menu-utama"
-    data-menu-toggle
-  >
-    <Icon name="menu" size={20} />
-  </button>
 
   <nav class="nav-main" id="menu-utama" aria-label={lang === "id" ? "Utama" : "Main"}>
     {links.map((l) => (
@@ -54,9 +43,22 @@ const links = [
     ))}
   </nav>
 
-  <div class="lang" role="group" aria-label={t("lang.switch")}>
-    <a href={lang === "id" ? currentPath : otherHref} aria-current={lang === "id" ? "true" : "false"}>ID</a>
-    <a href={lang === "en" ? currentPath : otherHref} aria-current={lang === "en" ? "true" : "false"}>EN</a>
+  <div class="bar__actions">
+    <div class="lang" role="group" aria-label={t("lang.switch")}>
+      <a href={lang === "id" ? currentPath : otherHref} aria-current={lang === "id" ? "true" : "false"}>ID</a>
+      <a href={lang === "en" ? currentPath : otherHref} aria-current={lang === "en" ? "true" : "false"}>EN</a>
+    </div>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label={lang === "id" ? "Buka menu navigasi" : "Open navigation menu"}
+      aria-expanded="false"
+      aria-controls="menu-utama"
+      data-menu-toggle
+    >
+      <Icon name="menu" size={22} />
+    </button>
   </div>
 </div>
 
@@ -72,23 +74,61 @@ const links = [
 </style>
 
 <script>
-  for (const btn of document.querySelectorAll<HTMLElement>("[data-menu-toggle]")) {
-    const nav = document.getElementById(btn.getAttribute("aria-controls") ?? "");
-    if (!nav) continue;
-    const set = (open: boolean) => {
-      btn.setAttribute("aria-expanded", String(open));
-      nav.classList.toggle("open", open);
-      nav.inert = !open;
-    };
-    btn.addEventListener("click", () => set(btn.getAttribute("aria-expanded") !== "true"));
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape" && btn.getAttribute("aria-expanded") === "true") {
-        set(false);
-        btn.focus();
+  // Mobile menu drawer toggle — robust, idempotent, and accessible
+  (() => {
+    if ((window as any).__navInitialized) return;
+    (window as any).__navInitialized = true;
+
+    document.addEventListener("click", (e) => {
+      const target = e.target as HTMLElement | null;
+      const btn = target?.closest<HTMLElement>("[data-menu-toggle]");
+
+      if (btn) {
+        e.stopPropagation();
+        const nav = document.getElementById(btn.getAttribute("aria-controls") ?? "");
+        if (!nav) return;
+        const willOpen = btn.getAttribute("aria-expanded") !== "true";
+        btn.setAttribute("aria-expanded", String(willOpen));
+        nav.classList.toggle("open", willOpen);
+        nav.inert = !willOpen;
+        return;
+      }
+
+      // Klik di luar menu untuk menutup
+      const openNav = document.querySelector<HTMLElement>(".nav-main.open");
+      if (openNav && !target?.closest(".nav-main") && !target?.closest("[data-menu-toggle]")) {
+        const toggleBtn = document.querySelector<HTMLElement>("[data-menu-toggle]");
+        if (toggleBtn) toggleBtn.setAttribute("aria-expanded", "false");
+        openNav.classList.remove("open");
+        openNav.inert = true;
       }
     });
-    window.matchMedia("(min-width:1024px)").addEventListener("change", (e) => {
-      if (e.matches) set(false);
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        const openNav = document.querySelector<HTMLElement>(".nav-main.open");
+        const btn = document.querySelector<HTMLElement>("[data-menu-toggle]");
+        if (openNav && openNav.classList.contains("open")) {
+          if (btn) {
+            btn.setAttribute("aria-expanded", "false");
+            btn.focus();
+          }
+          openNav.classList.remove("open");
+          openNav.inert = true;
+        }
+      }
     });
-  }
+
+    window.matchMedia("(min-width:1024px)").addEventListener("change", (e) => {
+      if (e.matches) {
+        const openNav = document.querySelector<HTMLElement>(".nav-main.open");
+        const btn = document.querySelector<HTMLElement>("[data-menu-toggle]");
+        if (btn) btn.setAttribute("aria-expanded", "false");
+        if (openNav) {
+          openNav.classList.remove("open");
+          openNav.inert = false;
+        }
+      }
+    });
+  })();
 </script>
