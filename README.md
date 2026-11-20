@@ -49,7 +49,6 @@ atau pindahkan nameserver ke Cloudflare.
 ```
 arizki-repo/
 ├── astro.config.mjs          # site URL, i18n (id/en), sitemap, Tailwind v4 via Vite
-├── keystatic.config.ts       # CMS opsional (fase 2)
 ├── public/
 │   ├── fonts/                # Archivo variabel (latin + latin-ext), OFL 1.1
 │   ├── favicon.svg
@@ -102,8 +101,8 @@ Diadaptasi dari `davidalfasunarna.com` (Tailwind 4.3.4):
 
 ## CMS opsional (fase 2 — belum dipasang)
 
-`keystatic.config.ts` sudah disiapkan untuk mengelola daftar panggung & brief lewat editor visual.
-Belum aktif karena menambah dependency. Aktifkan dengan:
+Konten dikelola langsung lewat `src/data/content.ts`. Kalau nanti butuh editor visual
+(Keystatic), pasang dengan:
 
 ```bash
 npm i @keystatic/core @keystatic/astro @astrojs/react react react-dom

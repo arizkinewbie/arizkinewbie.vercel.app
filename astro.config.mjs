@@ -9,6 +9,8 @@ export default defineConfig({
   site: process.env.SITE_URL || "https://arizkinewbie.com",
   integrations: [
     sitemap({
+      // Halaman / hanya meta-refresh 301 ke /id/ — jangan masuk sitemap (duplikat di mata Google).
+      filter: (page) => new URL(page).pathname !== "/",
       i18n: {
         defaultLocale: "id",
         locales: { id: "id", en: "en" },
@@ -17,6 +19,10 @@ export default defineConfig({
   ],
   vite: {
     plugins: [tailwindcss()],
+    server: {
+      // Izinkan akses dev preview via hostname publik (agent.nbies.id:4321), bukan cuma IP/localhost.
+      allowedHosts: ["agent.nbies.id"],
+    },
   },
   i18n: {
     defaultLocale: "id",

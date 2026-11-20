@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<style>
+  @font-face {
+    font-family: "Archivo";
+    src: url("/fonts/archivo-latin.woff2") format("woff2");
+    font-weight: 100 900;
+    font-stretch: 62% 125%;
+    font-display: block;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1200px; height: 630px; overflow: hidden; }
+  body {
+    font-family: "Archivo", Arial, sans-serif;
+    background: #0b1526;
+    color: #fff;
+    position: relative;
+  }
+  .bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(90% 80% at 88% 8%, rgba(200,135,31,.45) 0%, rgba(200,135,31,0) 58%),
+      radial-gradient(80% 70% at 4% 96%, rgba(30,58,95,.9) 0%, rgba(30,58,95,0) 62%),
+      linear-gradient(148deg, #0b1526 0%, #16324f 52%, #1f4a6d 100%);
+  }
+  .grid {
+    position: absolute; inset: 0; opacity: .14;
+    background-image:
+      linear-gradient(rgba(255,255,255,.55) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.55) 1px, transparent 1px);
+    background-size: 64px 64px;
+    -webkit-mask-image: radial-gradient(72% 66% at 30% 46%, #000 18%, transparent 100%);
+    mask-image: radial-gradient(72% 66% at 30% 46%, #000 18%, transparent 100%);
+  }
+  .wrap {
+    position: relative; z-index: 2;
+    height: 100%;
+    padding: 68px 76px 60px;
+    display: flex; flex-direction: column;
+  }
+  .chips { display: flex; gap: 10px; margin-bottom: auto; }
+  .chip {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 9px 16px 9px 12px;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,.26);
+    background: rgba(255,255,255,.07);
+    font-size: 19px; font-weight: 500; letter-spacing: -.01em;
+    color: rgba(255,255,255,.94);
+  }
+  .chip i {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: #e8c37e; display: block;
+  }
+  h1 {
+    font-size: 92px;
+    line-height: .96;
+    font-weight: 800;
+    letter-spacing: -.035em;
+    font-stretch: 96%;
+    margin-bottom: 26px;
+  }
+  .role {
+    font-size: 30px;
+    font-weight: 600;
+    color: #e8c37e;
+    letter-spacing: -.012em;
+    margin-bottom: 14px;
+  }
+  .sub {
+    font-size: 23px;
+    line-height: 1.42;
+    color: rgba(255,255,255,.72);
+    max-width: 780px;
+    font-weight: 400;
+  }
+  .foot {
+    margin-top: auto;
+    display: flex; align-items: center; justify-content: space-between;
+    border-top: 1px solid rgba(255,255,255,.16);
+    padding-top: 24px;
+  }
+  .dom { font-size: 22px; font-weight: 700; letter-spacing: -.01em; }
+  .dom span { color: #e8c37e; }
+  .meta { display: flex; gap: 26px; font-size: 19px; color: rgba(255,255,255,.6); }
+</style>
+</head>
+<body>
+  <div class="bg"></div>
+  <div class="grid"></div>
+  <div class="wrap">
+    <div class="chips">
+      <span class="chip"><i></i>Tata Kelola AI</span>
+      <span class="chip"><i></i>Regulasi Digital &amp; Data</span>
+      <span class="chip"><i></i>Ekonomi Digital</span>
+    </div>
+
+    <div class="role">Tata Kelola AI &amp; Kebijakan Teknologi</div>
+    <h1>Arizki Putra<br>Rahman</h1>
+    <p class="sub">CEO Nbie Solutions · CTO SymptoMed. Mengawal Perpres AI dan UU PDP dari meja kerja.</p>
+
+    <div class="foot">
+      <div class="dom">arizkinewbie<span>.com</span></div>
+      <div class="meta"><span>nbies.id</span><span>symptomed.id</span><span>Jakarta</span></div>
+    </div>
+  </div>
+</body>
+</html>
