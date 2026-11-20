@@ -142,7 +142,7 @@ html {
 /* 5. Floating Back-to-Top HUD Pill */
 #tech-back-to-top {
   position: fixed;
-  bottom: 28px;
+  bottom: 84px;
   right: 28px;
   z-index: 9999;
   display: inline-flex;
@@ -150,10 +150,10 @@ html {
   gap: 8px;
   padding: 10px 16px;
   border-radius: 999px;
-  background: rgba(11, 21, 38, 0.88);
+  background: rgba(11, 21, 38, 0.92);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.18);
   color: #ffffff;
   font-family: inherit;
   font-size: 13px;
@@ -164,8 +164,17 @@ html {
   opacity: 0;
   visibility: hidden;
   transform: translateY(16px);
-  transition: opacity 0.35s var(--tech-ease), transform 0.35s var(--tech-ease), visibility 0.35s, border-color 0.25s, box-shadow 0.25s;
+  transition: opacity 0.35s var(--tech-ease), transform 0.35s var(--tech-ease), visibility 0.35s, border-color 0.25s, box-shadow 0.25s, bottom 0.25s ease;
   box-shadow: 0 8px 24px -6px rgba(0, 0, 0, 0.5);
+}
+
+@media (max-width: 640px) {
+  #tech-back-to-top {
+    bottom: 80px;
+    right: 16px;
+    padding: 8px 13px;
+    font-size: 12px;
+  }
 }
 
 #tech-back-to-top.visible {
